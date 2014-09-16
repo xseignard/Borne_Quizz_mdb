@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/jquery.js"></script>
+    <script src="js/quizz.js"></script>
+    <link href="quizz.css" rel="stylesheet">
+    <script src="js/CSSPlugin.min.js"></script>
+    <script src="js/EasePack.min.js"></script>
+    <script src="js/TweenLite.min.js"></script>
+</head>
+<body>
+
+
+<section id="ecran_video">
+    <video id="videoclip" controls="controls" title="Video title">
+        <source id="mp4video" src="media/intro.mp4" type="video/mp4"  />
+     </video>
+</section>    
+
+<section id="ecran_choix_quizz">
+    <ul>
+        <li><a href="javascript:startNewQuizz(1)">quizz 1</a> </li>
+        <li><a href="javascript:startNewQuizz(2)">quizz 2</a> </li>
+        <li><a href="javascript:startNewQuizz(3)">quizz 3</a> </li>
+        <li><a href="javascript:startNewQuizz(4)">quizz 4</a> </li>
+    </ul>
+</section>
+
+
+<section id="ecran_question">
+    <div class="header_quetion">
+        <div id="num_Quizz" class="num_Quizz_q2"></div>
+        <span id="num_Question"  class="num_Question_q2"></span>
+    </div>
+    <img id="illus_question">
+    <div id="question_prop_rep">
+        <p id="question"></p>
+        <div id="zone_propositions">
+            <div id="prop_a" class="proposition">
+                <div class="puce"></div>
+                <img src="img/a.png" class="puce_letter">
+                <a class="proposition_a" href="javascript:clickAnswer('a')"></a>
+            </div>
+            <div id="prop_b" class="proposition">
+                <div class="puce"></div>
+                <img src="img/b.png" class="puce_letter">
+                <a class=" proposition_b" href="javascript:clickAnswer('b')"></a>
+            </div>
+            <div id="prop_c" class="proposition">
+                <div class="puce"></div>
+                <img src="img/c.png" class="puce_letter">
+                <a class="proposition_c" href="javascript:clickAnswer('c')"></a>
+            </div>
+        </div>
+        <div id="zone_reponse"></div>
+    </div>
+
+    <div id="footer" class="footer_q2">
+        <ul>
+            <li class="score_j1"><span>Joueur 1 :</span><span class="score"></span><div class="icon"></div>
+                <div class="iconeWinLost"></div><span class="ligne_sep"></span></li>
+            <li class="score_j2"><span>Joueur 2 :</span><span class="score"></span><div class="icon"></div>
+                <div class="iconeWinLost"></div><span class="ligne_sep"></span></li>
+            <li class="score_j3"><span>Joueur 3 :</span><span class="score"></span><div class="icon"></div><div class="iconeWinLost"></div></li>
+        </ul>    
+    </div>
+    <div id="gifTimer"><img src=""> <span></span></div>  
+</section>
+
+</body>
+</html>

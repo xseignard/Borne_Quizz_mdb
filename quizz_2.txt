@@ -1,0 +1,102 @@
+[
+       {
+        "question": "11- François Ier était réputé pour être :",
+        "question_img": "none",
+        "proposition_a": "Petit",
+        "proposition_b": "Galant",
+        "proposition_c": "Sportif",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "12- Pendant quelle période François Ier a-t-il été Roi ?",
+        "question_img": "none",
+        "proposition_a": "La Révolution Française",
+        "proposition_b": "Le Moyen Âge",
+        "proposition_c": "La Renaissance",
+        "bonne_reponse": "c",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "13-François Ier est souvent utilisé par la publicité pour :",
+        "question_img": "none",
+        "proposition_a": "Vanter des bicyclettes",
+        "proposition_b": "Vanter des alcools raffinés",
+        "proposition_c": "Vanter des chapeaux",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "14- On dit d'Henri IV qu'il était :",
+        "question_img": "none",
+        "proposition_a": "Injuste avec son peuple",
+        "proposition_b": "Proche de son peuple",
+        "proposition_c": "Cruel avec son peuple",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "15- Qu'est-ce qu'Henri IV voulait donner à manger aux français ?",
+        "question_img": "none",
+        "proposition_a": "Un bœuf bourguignon",
+        "proposition_b": "Une poule au pot",
+        "proposition_c": "Un pot au feu",
+        "bonne_reponse": "b",
+        "reponse": "Henri IV était réputé proche de son peuple et l'histoire lui attribue cette phrase « Si Dieu me donne encore de la vie je ferai qu'il n'y aura point de laboureur en mon Royaume qui n'ait moyen d'avoir une poule dans son pot. » Bien que le contexte de cette formule ne soit pas parfaitement établi, elle associe définitivement Henri IV à ce plat traditionnel français.",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "16- Qui a vécu à Versailles ?",
+        "question_img": "none",
+        "proposition_a": "Henri XIV",
+        "proposition_b": "Louis XIV",
+        "proposition_c": "François Ier",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "17- Quel était le symbole de Louis XIV ?",
+        "question_img": "none",
+        "proposition_a": "Un glaive",
+        "proposition_b": "Le lion",
+        "proposition_c": "Le soleil",
+        "bonne_reponse": "c",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "18-Au temps de Louis XIV, Versailles était un château :",
+        "question_img": "none",
+        "proposition_a": "Tout petit",
+        "proposition_b": "Très inconfortable et froid",
+        "proposition_c": "Situé dans le Sud de la France",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "19- Comment appelait-on ces personnages de la Révolution Française ?",
+        "question_img": "none",
+        "proposition_a": "1.Les sans-culottes",
+        "proposition_b": "2.Les culottes rayées",
+        "proposition_c": "3.Les culottes rouges",
+        "bonne_reponse": "a",
+        "reponse": "En 1789, l'on nomme  « sans-culottes » les manifestants populaires qui portent des pantalons à rayures, par mépris. En effet, eux ne portaient pas les culottes dont étaient vêtus la noblesse et la bourgeoisie.",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "20- Quel évènement de la Révolution Française est célébré le 14 Juillet ?",
+        "question_img": "none",
+        "proposition_a": "La mort de Louis XVI",
+        "proposition_b": "La prise de la Bastille",
+        "proposition_c": "La proclamation de la République",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    }
+]

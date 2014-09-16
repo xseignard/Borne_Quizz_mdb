@@ -1,0 +1,408 @@
+[
+    {
+        "question": "1- Dans l'imaginaire collectif, à qui appartient ce casque ?",
+        "question_img": "casque.png",
+        "proposition_a": "Aux Romains",
+        "proposition_b": "Aux chevaliers",
+        "proposition_c": "Aux Gaulois",
+        "bonne_reponse": "c",
+        "reponse": "L'image du casque ailé, illustrant les paquets de cigarettes Gauloises depuis 1925 et reprise par Uderzo dans Astérix, provient d'une mauvaise interprétation des archéologues du 19e siècle qui ont assimilé les cache-joues des casques gaulois (paragnathides) à des ailes flottant sur les côtés.",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "2- Quel roi est connu pour avoir soi-disant inventé l'école ?",
+        "question_img": "none",
+        "proposition_a": "François Ier",
+        "proposition_b": "Charlemagne",
+        "proposition_c": "Le Roi Dagobert",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "3- Comment était la barbe de Charlemagne ?",
+        "question_img": "none",
+        "proposition_a": "Fleurie",
+        "proposition_b": "Blanche",
+        "proposition_c": "Il n'avait pas de barbe",
+        "bonne_reponse": "c",
+        "reponse": "En réalité, Charlemagne était sans doute imberbe. Les siècles suivants l'ont représenté avec la barbe blanche des sages. Le mot fleuri provient sans doute d'une mauvaise interprétation du vieux français flori qui signifie blanc et/ou de la Chanson de Roland « blanche à la barbe cum flur en avrill » ?",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "4- Bertrand Du Guesclin était :",
+        "question_img": "none",
+        "proposition_a": "Un roi",
+        "proposition_b": "Un chevalier",
+        "proposition_c": "Un évêque",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "5- Qui Jeanne d'Arc a-t-elle combattu et renvoyé hors de France ?",
+        "question_img": "none",
+        "proposition_a": "Les Anglais",
+        "proposition_b": "Le Roi de France",
+        "proposition_c": "Les évêques",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "6- Comment est morte Jeanne d'Arc ?",
+        "question_img": "none",
+        "proposition_a": "Elle a été brûlée sur le bûcher ",
+        "proposition_b": "Elle est morte de vieillesse",
+        "proposition_c": "Elle est morte sur le champ de bataille",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "7-Jeanne d'Arc est une sainte :",
+        "question_img": "none",
+        "proposition_a": "Vrai",
+        "proposition_b": "Faux",
+        "proposition_c": "Elle va bientôt le devenir",
+        "bonne_reponse": "a",
+        "reponse": "Canonisée en 1920, Jeanne d Arc est proclamée Sainte patronne secondaire de la France par Pie XI en 1922.",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "8- On dit du Chevalier Bayard qu'il est :",
+        "question_img": "none",
+        "proposition_a": "Sans peur et sans reproche",
+        "proposition_b": "Sans peur et sans lâcheté",
+        "proposition_c": "Sans peur et sans bêtise",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "9- Anne de Bretagne était :",
+        "question_img": "none",
+        "proposition_a": "Comtesse de Bretagne",
+        "proposition_b": "Reine de Bretagne",
+        "proposition_c": "Reine de France",
+        "bonne_reponse": "c",
+        "reponse": "Anne de Bretagne, duchesse de Bretagne, fut également deux fois reine de France. ",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "10- Anne de Bretagne est souvent représentée avec ce symbole : comment s'appelle-t-il ?",
+        "question_img": "hermine.png",
+        "proposition_a": "La fleur de lys",
+        "proposition_b": "L'hermine",
+        "proposition_c": "Le triskel",
+        "bonne_reponse": "b",
+        "reponse": "Explication : dessins d'une fleur de lys, d'une hermine et d'un triskel, avec noms.",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "11- François Ier était réputé pour être :",
+        "question_img": "none",
+        "proposition_a": "Petit",
+        "proposition_b": "Galant",
+        "proposition_c": "Sportif",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "12- Pendant quelle période François Ier a-t-il été Roi ?",
+        "question_img": "none",
+        "proposition_a": "La Révolution Française",
+        "proposition_b": "Le Moyen Âge",
+        "proposition_c": "La Renaissance",
+        "bonne_reponse": "c",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "13-François Ier est souvent utilisé par la publicité pour :",
+        "question_img": "none",
+        "proposition_a": "Vanter des bicyclettes",
+        "proposition_b": "Vanter des alcools raffinés",
+        "proposition_c": "Vanter des chapeaux",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "14- On dit d'Henri IV qu'il était :",
+        "question_img": "none",
+        "proposition_a": "Injuste avec son peuple",
+        "proposition_b": "Proche de son peuple",
+        "proposition_c": "Cruel avec son peuple",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "15- Qu'est-ce qu'Henri IV voulait donner à manger aux français ?",
+        "question_img": "none",
+        "proposition_a": "Un bœuf bourguignon",
+        "proposition_b": "Une poule au pot",
+        "proposition_c": "Un pot au feu",
+        "bonne_reponse": "b",
+        "bonne_reponse": "Henri IV était réputé proche de son peuple et l'histoire lui attribue cette phrase « Si Dieu me donne encore de la vie je ferai qu'il n'y aura point de laboureur en mon Royaume qui n'ait moyen d'avoir une poule dans son pot. » Bien que le contexte de cette formule ne soit pas parfaitement établi, elle associe définitivement Henri IV à ce plat traditionnel français.",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "16- Qui a vécu à Versailles ?",
+        "question_img": "none",
+        "proposition_a": "Henri XIV",
+        "proposition_b": "Louis XIV",
+        "proposition_c": "François Ier",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "17- Quel était le symbole de Louis XIV ?",
+        "question_img": "none",
+        "proposition_a": "Un glaive",
+        "proposition_b": "Le lion",
+        "proposition_c": "Le soleil",
+        "bonne_reponse": "c",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "18-Au temps de Louis XIV, Versailles était un château :",
+        "question_img": "none",
+        "proposition_a": "Tout petit",
+        "proposition_b": "Très inconfortable et froid",
+        "proposition_c": "Situé dans le Sud de la France",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "19- Comment appelait-on ces personnages de la Révolution Française ?",
+        "question_img": "none",
+        "proposition_a": "1.Les sans-culottes",
+        "proposition_b": "2.Les culottes rayées",
+        "proposition_c": "3.Les culottes rouges",
+        "bonne_reponse": "a",
+        "bonne_reponse": "En 1789, l'on nomme  « sans-culottes » les manifestants populaires qui portent des pantalons à rayures, par mépris. En effet, eux ne portaient pas les culottes dont étaient vêtus la noblesse et la bourgeoisie.",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "20- Quel évènement de la Révolution Française est célébré le 14 Juillet ?",
+        "question_img": "none",
+        "proposition_a": "La mort de Louis XVI",
+        "proposition_b": "La prise de la Bastille",
+        "proposition_c": "La proclamation de la République",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "21- Quel roi a été guillotiné pendant la Révolution Française ?",
+        "question_img": "none",
+        "proposition_a": "Louis XVI",
+        "proposition_b": "Charles X",
+        "proposition_c": "Louis XIV",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "22- Que porte Marianne sur la tête ?",
+        "question_img": "none",
+        "proposition_a": "Un foulard bleu-blanc-rouge",
+        "proposition_b": "Un bonnet phrygien et une cocarde",
+        "proposition_c": "Un chapeau de paludier",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "23- Que représente Marianne ?",
+        "question_img": "none",
+        "proposition_a": "La Monarchie et la France",
+        "proposition_b": "L'Empire et la France",
+        "proposition_c": "La République et la France",
+        "bonne_reponse": "c",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "24- Par qui ce chapeau était-il porté ?",
+        "question_img": "chapeau.png",
+        "proposition_a": "Napoléon Ier",
+        "proposition_b": "Les soldats français",
+        "proposition_c": "François Mitterrand",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "25- Dans quelle position Napoléon Ier est-il souvent représenté ?",
+        "question_img": "none",
+        "proposition_a": "Le poing en l'air",
+        "proposition_b": "La main sur l'estomac",
+        "proposition_c": "Au garde-à-vous",
+        "bonne_reponse": "b",
+        "bonne_reponse": "L'origine de cette posture, que l'on retrouve sur les portraits de l'empereur, trouve plusieurs explications, des plus farfelues aux plus réalistes. Il est improbable qu'elle soit due à d'éventuelles douleurs à l'estomac, ou qu'il s'agisse d'un des signes de reconnaissance de la franc-maçonnerie. Cette position correspond plus vraisemblablement aux règles de bienséance de l'époque, selon lesquelles il était inconvenant de laisser pendre son bras le long du corps. En l'absence de poche dans les pantalons, les hommes glissaient leur main droite dans leur veston…",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "26- Dans quel pays Napoléon Ier s'est-il fait battre à plate couture ?",
+        "question_img": "none",
+        "proposition_a": "Le Portugal",
+        "proposition_b": "L'Allemagne",
+        "proposition_c": "La Russie",
+        "bonne_reponse": "c",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "27- Quelle est la plus célèbre victoire de Napoléon Ier ?",
+        "question_img": "none",
+        "proposition_a": "La bataille d'Austerlitz",
+        "proposition_b": "La bataille de Waterloo",
+        "proposition_c": "La bataille de Trafalgar",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "28-Comment s'appelait l'armée de Napoléon ?",
+        "question_img": "none",
+        "proposition_a": "La Grande Armée",
+        "proposition_b": "La Puissante",
+        "proposition_c": "L'Impériale",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "29- Où la France avait-elle beaucoup de colonies ?",
+        "question_img": "none",
+        "proposition_a": "En Amérique",
+        "proposition_b": "En Afrique",
+        "proposition_c": "En Antarctique",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "30- Que vante-t-on à travers l'image des colonies ?",
+        "question_img": "none",
+        "proposition_a": "Le multiculturalisme",
+        "proposition_b": "La grandeur de la France",
+        "proposition_c": "Les oranges amères",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "31- Combien de temps a duré l'Affaire Dreyfus ?",
+        "question_img": "none",
+        "proposition_a": "12 ans",
+        "proposition_b": "2 ans",
+        "proposition_c": "22 ans",
+        "bonne_reponse": "a",
+        "bonne_reponse": "L'affaire Dreyfus débute en 1894 avec la condamnation au bagne à perpétuité du capitaine pour trahison. Le procès en révision a lieu à Rennes en 1899 et se termine avec une seconde condamnation à 10 ans de détention le 9 septembre 1899. Gracié par le président Émile Loubet le 19 septembre suivant, il est réhabilité et réintègre l'armée en 1906. ",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "32- Comment surnommait-on Georges Clemenceau ?",
+        "question_img": "none",
+        "proposition_a": "Le Dragon",
+        "proposition_b": "Le Tigre",
+        "proposition_c": "Le Renard",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "33- Qui sont Armand Fallières, Félix Faure, Émile Loubet et Raymond Poincaré ?",
+        "question_img": "none",
+        "proposition_a": "Des commandants de l'armée",
+        "proposition_b": "Des vainqueurs du Tour de France",
+        "proposition_c": "Des présidents de la IIIe République",
+        "bonne_reponse": "c",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "34- Quel président de la IIIe République était réputé pour sa rigidité ?",
+        "question_img": "none",
+        "proposition_a": "Raymond Poincaré",
+        "proposition_b": "Félix Faure",
+        "proposition_c": "Armand Fallières",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "35- Que s'est-il passé en mai 1968 ?",
+        "question_img": "none",
+        "proposition_a": "La démission du Président de la République",
+        "proposition_b": "De grandes manifestations partout en France",
+        "proposition_c": "Des Jeux Olympiques",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "36- Comment surnomme-t-on les soldats de la Première Guerre mondiale ?",
+        "question_img": "none",
+        "proposition_a": "Les Chevelus",
+        "proposition_b": "Les Barbus",
+        "proposition_c": "Les Poilus",
+        "bonne_reponse": "c",
+        "bonne_reponse": "L'origine du mot poilu, selon le linguiste Albert Dauzat dans son ouvrage L'Argot de la guerre, d'après une enquête auprès des officiers et soldats , paru en 1918, est la suivante : '' Avant d'être le soldat de la Marne, le '' poilu '' est le grognard d'Austerlitz, ce n'est pas l'homme à la barbe inculte, qui n'a pas le temps de se raser, ce serait trop pittoresque, c'est beaucoup mieux : c'est l'homme qui a du poil au bon endroit, pas dans la main ! '' c'est donc un symbole de courage et de virilité. ",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "37-Au début de la Première Guerre mondiale, quel uniforme portaient les soldats ? ",
+        "question_img": "none",
+        "proposition_a": "Une veste et un pantalon kaki",
+        "proposition_b": "Une veste bleue et un pantalon rouge",
+        "proposition_c": "Une veste et un pantalon bleus",
+        "bonne_reponse": "b",
+        "bonne_reponse": "En 1914, les soldats sont partis au front avec des tenues héritées de la guerre de 1870 : Képi rouge et bleu, pantalon rouge garance, manteau en laine gris-bleu. Le pantalon rouge trop voyant, dont la teinture venait d'Allemagne, est abandonné en 1915 pour une tenue bleu horizon avec un casque. ",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "38-Comment appelle-t-on la période qui va de 1920 à 1930 ?",
+        "question_img": "none",
+        "proposition_a": "Les Années Folles",
+        "proposition_b": "Les Trente Glorieuses",
+        "proposition_c": "La Grande Dépression",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "39- Quel est l'état d'esprit des Français après la Deuxième Guerre mondiale ?",
+        "question_img": "none",
+        "proposition_a": "Les Français perdent confiance en l'idée de progrès",
+        "proposition_b": "Les Français rêvent du modèle économique américain",
+        "proposition_c": "Les Français veulent instaurer un nouvel ordre moral",
+        "bonne_reponse": "b",
+        "reponse": "none",
+        "reponse_anim": "none"
+    },
+    {
+        "question": "40-Quel slogan de mai 1968 a été réutilisé dans une publicité des supermarchés E. Leclerc ? ",
+        "question_img": "none",
+        "proposition_a": "« Il est interdit d'interdire »",
+        "proposition_b": "« Sous les pavés, la plage »",
+        "proposition_c": "« Métro-boulot-dodo »",
+        "bonne_reponse": "a",
+        "reponse": "none",
+        "reponse_anim": "none"
+    }
+]
