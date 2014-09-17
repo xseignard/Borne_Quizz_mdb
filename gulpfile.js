@@ -97,7 +97,7 @@ gulp.task('img', function() {
 
 gulp.task('nw', function() {
 	var nw = new NwBuilder({
-		files: [dest.folder, 'package.json'],
+		files: [dest.folder + '/**/*', 'package.json'],
 		platforms: ['win','osx', 'linux64'],
 		buildDir: './webkitbuilds',
 		version: '0.8.6'
@@ -140,4 +140,13 @@ gulp.task('default', function() {
 	gulp.watch(src.css, ['usemin']);
 	gulp.watch(src.index, ['usemin']);
 	gulp.watch(src.img, ['img']);
+});
+
+gulp.task('buildApp', function() {
+	// delete dist folder and rebuild it
+	rimraf(dest.folder, function() {
+		rimraf('webkitbuilds', function() {
+			gulp.start('question', 'media', 'img', 'font', 'usemin', 'nw');
+		});
+	});
 });

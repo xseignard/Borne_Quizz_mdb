@@ -1,7 +1,6 @@
 var currentQuizz = 1;
 var currentQuestion = 1;
 var bonne_reponse = "???";
-var xmlhttp = new XMLHttpRequest();
 var url = "question/quizz.json";
 var JsonArray = "";
 
@@ -63,19 +62,6 @@ function updateScores(){
 }
 
 
-// loading des questions
-
-xmlhttp.onreadystatechange = function() {
-
-	console.log(xmlhttp.status);
-	console.log(xmlhttp.readyState);
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		var myArr = JSON.parse(xmlhttp.responseText);
-		valideJsonArray(myArr);
-	}
-}
-
-
 function valideJsonArray(arr) {
 
 	JsonArray = arr;
@@ -95,9 +81,10 @@ function startNewQuizz(id){
 	currentQuestion = 0;
 	var urlQuizz = "question/quizz_"+currentQuizz+".json";
 	//var urlQuizz = "quizz.json";
-	xmlhttp.open("GET", urlQuizz, true);
-	xmlhttp.send();
-
+	// loading des questions
+	$.getJSON(urlQuizz, function(data) {
+		valideJsonArray(data);
+	});
 }
 
 
