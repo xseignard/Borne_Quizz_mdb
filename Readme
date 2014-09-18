@@ -1,0 +1,5 @@
+imac-de-manu-4:Borne_Quizz_mdb manu$ bower i
+
+-> 	crée un dossier bower_components et rapatrie à l'intèrieur les librairies listées
+	(listées dans bower.json)
+

@@ -82,5 +82,5 @@ margin:  20px 0 0 0; }
 
 
 
-#ecran_video{ position: absolute; width: 100%; min-height: 500px; background: red; display: block }
+#ecran_video{ position: absolute; display: none; width: 100%; min-height: 500px; background: red }
 #ecran_video video{ display: none}
