@@ -1,0 +1,103 @@
+[
+	{
+		"question": "21- Quel roi a été guillotiné pendant la Révolution Française ?",
+		"question_img": "none",
+		"proposition_a": "Louis XVI",
+		"proposition_b": "Charles X",
+		"proposition_c": "Louis XIV",
+		"bonne_reponse": "a",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "22- Que porte Marianne sur la tête ?",
+		"question_img": "none",
+		"proposition_a": "Un foulard bleu-blanc-rouge",
+		"proposition_b": "Un bonnet phrygien et une cocarde",
+		"proposition_c": "Un chapeau de paludier",
+		"bonne_reponse": "b",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "23- Que représente Marianne ?",
+		"question_img": "none",
+		"proposition_a": "La Monarchie et la France",
+		"proposition_b": "L'Empire et la France",
+		"proposition_c": "La République et la France",
+		"bonne_reponse": "c",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "24- Par qui ce chapeau était-il porté ?",
+		"question_img": "chapeau.png",
+		"proposition_a": "Napoléon Ier",
+		"proposition_b": "Les soldats français",
+		"proposition_c": "François Mitterrand",
+		"bonne_reponse": "a",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "25- Dans quelle position Napoléon Ier est-il souvent représenté ?",
+		"question_img": "none",
+		"proposition_a": "Le poing en l'air",
+		"proposition_b": "La main sur l'estomac",
+		"proposition_c": "Au garde-à-vous",
+		"bonne_reponse": "b",
+		"reponse": "L'origine de cette posture, que l'on retrouve sur les portraits de l'empereur, trouve plusieurs explications, des plus farfelues aux plus réalistes. Il est improbable qu'elle soit due à d'éventuelles douleurs à l'estomac, ou qu'il s'agisse d'un des signes de reconnaissance de la franc-maçonnerie. Cette position correspond plus vraisemblablement aux règles de bienséance de l'époque, selon lesquelles il était inconvenant de laisser pendre son bras le long du corps. En l'absence de poche dans les pantalons, les hommes glissaient leur main droite dans leur veston…",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "26- Dans quel pays Napoléon Ier s'est-il fait battre à plate couture ?",
+		"question_img": "none",
+		"proposition_a": "Le Portugal",
+		"proposition_b": "L'Allemagne",
+		"proposition_c": "La Russie",
+		"bonne_reponse": "c",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "27- Quelle est la plus célèbre victoire de Napoléon Ier ?",
+		"question_img": "none",
+		"proposition_a": "La bataille d'Austerlitz",
+		"proposition_b": "La bataille de Waterloo",
+		"proposition_c": "La bataille de Trafalgar",
+		"bonne_reponse": "a",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "28-Comment s'appelait l'armée de Napoléon ?",
+		"question_img": "none",
+		"proposition_a": "La Grande Armée",
+		"proposition_b": "La Puissante",
+		"proposition_c": "L'Impériale",
+		"bonne_reponse": "a",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "29- Où la France avait-elle beaucoup de colonies ?",
+		"question_img": "none",
+		"proposition_a": "En Amérique",
+		"proposition_b": "En Afrique",
+		"proposition_c": "En Antarctique",
+		"bonne_reponse": "b",
+		"reponse": "none",
+		"reponse_anim": "none"
+	},
+	{
+		"question": "30- Que vante-t-on à travers l'image des colonies ?",
+		"question_img": "none",
+		"proposition_a": "Le multiculturalisme",
+		"proposition_b": "La grandeur de la France",
+		"proposition_c": "Les oranges amères",
+		"bonne_reponse": "b",
+		"reponse": "none",
+		"reponse_anim": "none"
+	}
+]
