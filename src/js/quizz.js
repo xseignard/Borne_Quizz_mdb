@@ -1,13 +1,15 @@
-var currentQuizz = 1;
+var currentQuizz = 0;
 var currentQuestion = 1;
 var bonne_reponse = "???";
 var url = "question/quizz.json";
 var JsonArray = "";
 
-var duree_question = 4;
+var duree_question = 2;
+var duree_reponse = 1;
 var secondes = 0;
 
-var currentCouleur = "#81ccc2";
+var couleur_id_currentQuizz = ["#000000","#0078b4","#a0dcfa","#e66428","#f5b45a"];
+var currentCouleur = "#000";
 var gris_prop = "#a8a59e";
 var gris_wrong_prop = "#e9e5de";
 
@@ -15,52 +17,64 @@ var timer1;
 var timer2;
 
 
-// joueur object
 
-var joueur = function(name){
-	this.name = name;
-	this.score = 0;
-	this.avote = false;
-	this.iconBgPos = 0;
-	this.getScore = function(){
-		return(this.score);
-	}
-	this.initScore = function(){
-		this.score = 0;
-	}
-	this.reponse = function(isRiteOrWrong){
-		if(isRiteOrWrong){
-			// right
-			this.score+= 10;
-			this.iconBgPos = "0 0px";
-		}else{
-			this.iconBgPos = "0 50%";
-		}
-		this.avote = true;
-		console.log(this.name+" answer : "+isRiteOrWrong+" score : "+this.score);
+// Main init
+
+function initMain(){
+
+	show_ecran("ecran_video");
+	playVideo("1.1");
+	//currentQuizz = 0;
+	//nextQuizz();
+}
+
+// Screen Swith
+
+function show_ecran(id){
+
+	switch(id){
+		case "ecran_video":
+			$("#zone_reponse").css("display","none");
+			$("#ecran_questions").css("display","none");
+			$("#ecran_video").css("display","block");
+			break;
+		case "questions":
+			$("#ecran_video video").first().attr('src','')
+			$("#ecran_video").css("display","none");
+			$("#zone_reponse").css("display","none");
+			$("#ecran_questions").fadeOut();
+			break;
 	}
 }
 
-// init 3 joueurs
+// Gameplay
 
-var joueur1 = new joueur("joueur 1");
-var joueur2 = new joueur("joueur 2");
-var joueur3 = new joueur("joueur 3");
+function nextQuizz(){
 
-$( "#ecran_choix_quizz" ).hide(0);
-$( "#ecran_question" ).hide(0);
+	//alert("nextQuizz");
+	show_ecran("questions");
+	if(currentQuizz<4){ currentQuizz=Number(currentQuizz+1); }else{ currentQuizz = 1; }
+	console.log("init Quizz N°"+currentQuizz);
 
+	/* custom visuals  */
+	currentCouleur = couleur_id_currentQuizz[currentQuizz];
+	$("#gifTimer span").css("color",currentCouleur);
+	$("#num_Question").css("color",currentCouleur);
+	document.getElementById("num_Quizz").className= "num_Quizz_q"+currentQuizz; ;
+	document.getElementById("footer").className= "footer_q"+currentQuizz; ;
 
-function updateScores(){
+	/* init Gameplay */
+	joueur1.initScore();
+	joueur2.initScore();
+	joueur3.initScore();
+	currentQuestion = 0;
 
-	$(".score_j1 .score").html( joueur1.score+"pt");
-	$(".score_j1 .icon").css("background-position",joueur1.iconBgPos);
-	$(".score_j2 .score").html( joueur2.score+"pt");
-	$(".score_j2 .icon").css("background-position",joueur2.iconBgPos);
-	$(".score_j3 .score").html( joueur3.score+"pt");
-	$(".score_j3 .icon").css("background-position",joueur3.iconBgPos);
+	/* get Quizz */
+	var urlQuizz = "question/quizz_"+currentQuizz+".json";
+	$.getJSON(urlQuizz, function(data) {
+		valideJsonArray(data);
+	});
 }
-
 
 function valideJsonArray(arr) {
 
@@ -69,40 +83,25 @@ function valideJsonArray(arr) {
 	question_CheckIn();
 }
 
+function updateScores(){
 
-function startNewQuizz(id){
 
-	joueur1.initScore();
-	joueur2.initScore();
-	joueur3.initScore();
-	$("#gifTimer span").css("color",currentCouleur);
-	$( "#ecran_choix_quizz" ).hide();
-	currentQuizz = id;
-	currentQuestion = 0;
-	var urlQuizz = "question/quizz_"+currentQuizz+".json";
-	//var urlQuizz = "quizz.json";
-	// loading des questions
-	$.getJSON(urlQuizz, function(data) {
-		valideJsonArray(data);
-	});
+	posBg =  "0 "+ Math.floor( joueur1.score  ) + "%";
+	$(".score_j1 .score").css("background-position", posBg );
+	$(".score_j1 .icon").css("background-position",joueur1.iconBgPos);
+	var tween1 = TweenLite.to(".score_j1 .icon", 1, { rotationY:0, opacity:"1", delay:0.5, ease:Power2.easeOut});
+
+	posBg =  "0 "+ Math.floor( joueur2.score  ) + "%";
+	$(".score_j2 .score").css("background-position", posBg );
+	$(".score_j2 .icon").css("background-position",joueur2.iconBgPos);
+	var tween2 = TweenLite.to(".score_j2 .icon", 1, { rotationY:0, opacity:"1",  delay:0.5, ease:Power2.easeOut});
+
+	posBg =  "0 "+ Math.floor( joueur3.score  ) + "%";
+	$(".score_j3 .score").css("background-position", posBg );
+	$(".score_j3 .icon").css("background-position",joueur3.iconBgPos);
+	var tween3 = TweenLite.to(".score_j3 .icon", 1, { rotationY:0, opacity:"1", delay:0.5, ease:Power2.easeOut});
 }
 
-
-function ShowChoixQuizz(){
-
-	$( "#ecran_choix_quizz" ).fadeIn(1000);
-	$( "#ecran_question" ).hide(0);
-
-}
-
-function nextQuestion(){
-
-	console.log(currentQuestion+"/"+JsonArray.length-1);
-	if(currentQuestion<JsonArray.length-1){
-		currentQuestion++;
-		question_CheckIn();
-	}else{ finiQuizz() }
-}
 
 function question_CheckIn(){
 
@@ -118,7 +117,7 @@ function question_CheckIn(){
 	var i = currentQuestion;
 	updateScores();
 	$( " #num_Question" ).html("Question "+Number(currentQuestion+1)+"/"+10)
-	$( "#ecran_question" ).fadeIn(1000);
+	$( "#ecran_questions" ).fadeIn(1000);
 	console.log(JsonArray[i].question);
 
 	$("#question").html(JsonArray[i].question);
@@ -155,6 +154,21 @@ function question_CheckIn(){
 	waitForAnswer();
 }
 
+function nextQuestion(){
+
+	if(currentQuestion<JsonArray.length-1){
+		currentQuestion++;
+		question_CheckIn();
+	}else{ finiQuizz() }
+}
+
+
+function finiQuizz(){
+
+	playVideo("nextQuizzEntree");
+}
+
+
 function waitForAnswer(){
 
 	console.log("// function waitForAnswer");
@@ -162,11 +176,16 @@ function waitForAnswer(){
 	joueur1.avote = false;
 	joueur2.avote = false;
 	joueur3.avote = false;
+
+	TweenLite.to(".score_j1 .icon", 0, { rotationY:450 });
+	TweenLite.to(".score_j2 .icon", 0, { rotationY:450 });
+	TweenLite.to(".score_j3 .icon", 0, { rotationY:450 });
+
 	$(document).keypress(traitement);
 	$("#gifTimer span").html("");
 	$("#gifTimer span").fadeIn(100);
 	$("#gifTimer img").fadeIn(100);
-	$("#gifTimer img").attr('src',"img/chrono_q2.gif");
+	$("#gifTimer img").attr('src',"img/chrono_q"+currentQuizz+".gif");
 	console.log("call -> loop_CompteArebours / secondes = "+ secondes);
 	secondes = duree_question;
 	loop_CompteArebours();
@@ -175,8 +194,7 @@ function waitForAnswer(){
 
 function loop_CompteArebours(){
 
-	console.log("loop_CompteArebours "+ secondes);
-   //
+
 	if(secondes<0){
 		clearTimeout(timer1);
 		showReponse();
@@ -190,9 +208,13 @@ function loop_CompteArebours(){
 
 function showReponse(){
 
+	joueur1.avote = true;
+	joueur2.avote = true;
+	joueur3.avote = true;
+
 	console.log("// function showReponse");
-	$("#gifTimer img").fadeOut(100);
-	$("#gifTimer span").fadeOut(100);
+	$("#gifTimer img").fadeOut(200);
+	$("#gifTimer span").fadeOut(400);
 
 	switch(bonne_reponse) {
 		case "a":
@@ -216,21 +238,44 @@ function showReponse(){
 	}
 
 	// affichage de la réponse
+
+	$("#zone_reponse video").css("display","none");
+
 	var i =  currentQuestion;
 	if(JsonArray[i].reponse != "none"){
-		$("#zone_reponse").html(JsonArray[i].reponse);
-		$("#zone_reponse").fadeIn();
-		timer2 = setTimeout(question_CheckOut,6000);
+		$("#zone_reponse .txt").css("color",currentCouleur);
+		$("#zone_reponse .txt").html(JsonArray[i].reponse);
+		$("#zone_reponse .txt").delay( 3500 ).fadeIn( 600 );
+		$( "#zone_reponse" ).delay( 3000 ).fadeIn( 400 );
+		timer2 = setTimeout(question_CheckOut,duree_reponse+8000);
 	}else{
-		timer2 = setTimeout(question_CheckOut,3000);
+		$("#zone_reponse .txt").html( "" );
+		if(JsonArray[i].reponse_anim != "none"){
+			$("#zone_reponse video").delay( 3000 ).fadeIn( 400 );
+			videoFile = "../media/"+JsonArray[i].reponse_anim;
+			console.log("load video "+videoFile);
+			$("#zone_reponse video").bind("ended", function() { question_CheckOut(); $("#zone_reponse video").delay( 1000 ).fadeOut(); } );
+			$('#zone_reponse video source').attr('src', videoFile);
+
+			$("#zone_reponse video").css("display","block");
+			$("#zone_reponse").css("display","block");
+			TweenLite.fromTo("#zone_reponse", 1, {opacity:"0"}, {  delay:2.5, opacity:"1",  onComplete:playvidAnswer } );
+		}else{
+			question_CheckOut();
+		}
 	}
+}
+
+function playvidAnswer(){
+
+		$("#zone_reponse video")[0].load();
+		TweenLite.fromTo("#zone_reponse video", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
 }
 
 
 function question_CheckOut(){
 
-	$("#zone_reponse").fadeOut();
-
+	$("#zone_reponse").delay( 1000 ).fadeOut(1000);
 	clearTimeout(timer2);
 	console.log("// function question_CheckOut");
 	var i =  currentQuestion;
@@ -246,46 +291,31 @@ function question_CheckOut(){
 }
 
 
-
-
-function finiQuizz(){
-
-	ShowChoixQuizz();
-}
-
 function traitement(evenement){
 	var caractere = String.fromCharCode(evenement.which);
 	switch(caractere) {
-		case "1":
-			if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="a")); }
+		case "1": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="a")); }
 			break;
-		case "2":
-			if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="b")); }
+		case "2": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="b")); }
 			break;
-		case "3":
-			if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="c")); }
+		case "3": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="c")); }
 			break;
-		case "4":
-			if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="a")); }
+		case "4": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="a")); }
 			break;
-		case "5":
-			if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="b")); }
+		case "5":   if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="b")); }
 			break;
-		case "6":
-			if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="c")); }
+		case "6": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="c")); }
 			break;
-		case "7":
-			if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="a")); }
+		case "7": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="a")); }
 			break;
-		case "8":
-			if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="b")); }
+		case "8": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="b")); }
 			break;
-		case "9":
-			if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="c")); }
+		case "9": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="c")); }
 			break;
 	}
 	updateScores();
 }
+
 
 function clickAnswer(myAnswer){
 
@@ -300,22 +330,116 @@ function clickAnswer(myAnswer){
 			if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="c")); }
 			break;
 	}
-
 	updateScores();
 }
 
 
-//showVideoIntro();
-ShowChoixQuizz();
+function playVideo(id){
+
+	console.log("playVideo"+id);
+	show_ecran("ecran_video");
+
+	handler = function(){
+		console.log("remove listener bordel ! ");
+		document.getElementById("videoclip").removeEventListener("click", handler);
+        playVideo("1.3");
+    };
+
+	$('#ecran_video video').prop('loop', false)
+
+	switch(id) {
+
+		case "1.1":
+			videoFile = "../media/1.1Titre_entree.mp4";
+			playVideo_onEnd = "1.2";
+			//playVideo_onEnd = "nextQuizzEntree";
+		break;
+
+		case "1.2":
+			playVideo_onEnd = "non";
+			$('#ecran_video video').prop('loop', true);
+			videoFile = "../media/1.2Titre_boucle.mp4";
+			document.getElementById("videoclip").onclick=function(){ playVideo("1.3") };
+		break;
+
+		case "1.3":
+			document.getElementById("videoclip").onclick=function(){ /*nothing*/ };
+			playVideo_onEnd = "2.1";
+			videoFile = "../media/1.3Titre_sortie.mp4";
+		break;
+
+		case "2.1":
+			videoFile = "../media/2.1_principe_jeu.mp4";
+			playVideo_onEnd = "3.1";
+		break;
+
+		case "3.1":
+			videoFile = "../media/3.1_choix_quiz_entree.mp4";
+			playVideo_onEnd = "nextQuizzEntree";
+		break;
+
+		case "nextQuizzEntree":
+			playVideo_onEnd = "non";
+			$("#ecran_video video").bind("ended", function() { playVideo("empty"); nextQuizz();  } );
+			videoFile = "../media/3.2_choix_quiz_sortie_"+Number(currentQuizz+1)+".mp4";
+			//alert(videoFile);
+		break;
+
+		case "Q4":
+			videoFile = "../media/2.Q04_Guesclin.mp4";
+			playVideo_onEnd = "non";
+		break;
 
 
-function showVideoIntro(){
+		case "empty":
+			videoFile = "";
+			playVideo_onEnd = "non";
+		break;
+	}
 
-	$("#ecran_video").css("display","block");
-	$("#ecran_video").css("height", $(window).height());
 
-	$("#ecran_video video").css("display","block");
-	var videoFile = '../media/intro.mp4';
+	if(playVideo_onEnd != "non"){  	$("#ecran_video video").bind("ended", function() { playVideo(playVideo_onEnd); } );	}
+	else{ 							$("#ecran_video video").bind("ended", function() { /*nothing*/ } );	}
+
 	$('#ecran_video video source').attr('src', videoFile);
+	TweenLite.fromTo("#ecran_video video", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
 	$("#ecran_video video")[0].load();
+
 }
+
+
+// joueur object
+
+var joueur = function(name){
+	this.name = name;
+	this.score = 0;
+	this.avote = false;
+	this.iconBgPos = 0;
+	this.getScore = function(){
+		return(this.score);
+	}
+	this.initScore = function(){
+		this.score = 0;
+	}
+	this.reponse = function(isRiteOrWrong){
+		if(isRiteOrWrong){
+			// right
+			this.score+= 10;
+			this.iconBgPos = "0 0px";
+		}else{
+			this.iconBgPos = "0 50%";
+		}
+		this.avote = true;
+		console.log(this.name+" answer : "+isRiteOrWrong+" score : "+this.score);
+	}
+}
+
+// init 3 joueurs
+
+var joueur1 = new joueur("joueur 1");
+var joueur2 = new joueur("joueur 2");
+var joueur3 = new joueur("joueur 3");
+
+// Main init
+
+initMain();

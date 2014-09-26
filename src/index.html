@@ -7,31 +7,31 @@
 </head>
 <body>
 
-	<!--
+
+<div class="main">
+
+	<!-- ecran VIDEO -->
 	<section id="ecran_video">
-		<video id="videoclip" controls="controls" title="Video title">
-			<source id="mp4video" src="media/intro.mp4" type="video/mp4"  />
+		<video id="videoclip" autoplay autobuffer>
+			<source id="mp4video" src="" type="video/mp4"  />
 		 </video>
 	</section>
-	-->
-
-	<section id="ecran_choix_quizz">
-		<ul>
-			<li><a href="javascript:startNewQuizz(1)">quizz 1 </a> </li>
-			<li><a href="javascript:startNewQuizz(2)">quizz 2</a> </li>
-			<li><a href="javascript:startNewQuizz(3)">quizz 3</a> </li>
-			<li><a href="javascript:startNewQuizz(4)">quizz 4</a> </li>
-		</ul>
-	</section>
 
 
-	<section id="ecran_question">
-		<div class="header_quetion">
-			<div id="num_Quizz" class="num_Quizz_q2"></div>
-			<span id="num_Question"  class="num_Question_q2"></span>
+	<!-- ecran QUESTIONS -->
+	<section id="ecran_questions">
+		<div id="zone_reponse">
+			<div class="txt"></div>
+			<video  autoplay autobuffer>
+				<source id="mp4video" src="" type="video/mp4"  />
+			</video>
+		</div>
+		<div class="header_question">
+			<div id="num_Quizz" class=""></div>
+			<span id="num_Question"  class=""></span>
 		</div>
 		<img id="illus_question">
-		<div id="question_prop_rep">
+		<div id="zone_question">
 			<p id="question"></p>
 			<div id="zone_propositions">
 				<div id="prop_a" class="proposition">
@@ -50,16 +50,16 @@
 					<a class="proposition_c" href="javascript:clickAnswer('c')"></a>
 				</div>
 			</div>
-			<div id="zone_reponse"></div>
 		</div>
 
-		<div id="footer" class="footer_q2">
+		<div id="footer" class="">
 			<ul>
-				<li class="score_j1"><span>Joueur 1 :</span><span class="score"></span><div class="icon"></div>
+				<li class="score_j1"><span>Joueur 1</span><div class="score"></div><div class="icon"></div>
 					<div class="iconeWinLost"></div><span class="ligne_sep"></span></li>
-				<li class="score_j2"><span>Joueur 2 :</span><span class="score"></span><div class="icon"></div>
+				<li class="score_j2"><span>Joueur 2</span><div class="score"></div><div class="icon"></div>
 					<div class="iconeWinLost"></div><span class="ligne_sep"></span></li>
-				<li class="score_j3"><span>Joueur 3 :</span><span class="score"></span><div class="icon"></div><div class="iconeWinLost"></div></li>
+				<li class="score_j3"><span>Joueur 3</span><div class="score"></div><div class="icon"></div>
+					<div class="iconeWinLost"></div></li>
 			</ul>
 		</div>
 		<div id="gifTimer"><img src=""> <span></span></div>
@@ -70,11 +70,13 @@
 	<script src="../bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
 	<script src="../bower_components/gsap/src/uncompressed/easing/EasePack.js"></script>
 	<script src="../bower_components/gsap/src/uncompressed/TweenLite.js"></script>
+	<script src="../bower_components/gsap/src/uncompressed/TweenMax.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js js/quizz.min.js -->
 	<script src="js/quizz.js"></script>
 	<!-- endbuild -->
 
+</div>
 </body>
 </html>
