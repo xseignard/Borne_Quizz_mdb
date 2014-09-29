@@ -12,7 +12,7 @@
     "url": "https://github.com/manu-lechat/Borne_Quizz_mdb/issues"
   },
   "homepage": "https://github.com/manu-lechat/Borne_Quizz_mdb",
-  "main": "src/index.html",
+  "main": "dist/index.html",
   "window": {
     "toolbar": true,
     "frame": true,

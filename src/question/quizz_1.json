@@ -7,7 +7,7 @@
 		"proposition_c": "Aux Gaulois",
 		"bonne_reponse": "c",
 		"reponse": "L'image du casque ailé, illustrant les paquets de cigarettes Gauloises depuis 1925 et reprise par Uderzo dans Astérix, provient d'une mauvaise interprétation des archéologues du 19e siècle qui ont assimilé les cache-joues des casques gaulois (paragnathides) à des ailes flottant sur les côtés.",
-		"reponse_anim": "Q22_marianne.mp4"
+		"reponse_anim": "Q22_marianne.webm"
 	},
 	{
 		"question": "2- Quel roi est connu pour avoir soi-disant inventé l'école ?",
@@ -17,7 +17,7 @@
 		"proposition_c": "Le Roi Dagobert",
 		"bonne_reponse": "b",
 		"reponse": "none",
-		"reponse_anim": "Q22_marianne.mp4"
+		"reponse_anim": "Q22_marianne.webm"
 	},
 	{
 		"question": "3- Comment était la barbe de Charlemagne ?",
@@ -37,7 +37,7 @@
 		"proposition_c": "Un évêque",
 		"bonne_reponse": "b",
 		"reponse": "none",
-		"reponse_anim": "Q04_Guesclin.mp4"
+		"reponse_anim": "Q04_Guesclin.webm"
 	},
 	{
 		"question": "5- Qui Jeanne d'Arc a-t-elle combattu et renvoyé hors de France ?",
