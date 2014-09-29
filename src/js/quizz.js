@@ -76,26 +76,6 @@ function show_ecran(id){
 
 // Gameplay
 
-
-function Touchdown(evenement){
-
-	reinit_timer_reset();
-}
-
-function Quizz_sleeping(){
-
-	//alert("reset App'");
-	initMain();
-}
-
-function reinit_timer_reset(){
-
-	//console.log("reinit timer ");
-
-	clearTimeout(timer_sleeping);
-	timer_sleeping = setTimeout(Quizz_sleeping,duree_time_reset*1000);
-}
-
 function nextQuizz(){
 
 	//alert("nextQuizz");
@@ -484,8 +464,8 @@ function playVideo(id){
 
 	console.log("onEnd = "+toDoOnEnd);
 
-	$("#videoclip").bind("ended", toDoOnEnd);
-	//document.getElementById("videoclip").onended=toDoOnEnd;
+	//$("#videoclip").bind("ended", toDoOnEnd);
+	document.getElementById("videoclip").onended=toDoOnEnd;
 
 	$('#ecran_video  #videoclip source').attr('src', videoFile);
 	TweenLite.fromTo("#ecran_video  #videoclip", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
@@ -494,6 +474,28 @@ function playVideo(id){
 
 }
 
+
+// gestion du reset
+
+
+function Touchdown(evenement){
+
+	reinit_timer_reset();
+}
+
+function Quizz_sleeping(){
+
+	alert("reset App'");
+	initMain();
+}
+
+function reinit_timer_reset(){
+
+	//console.log("reinit timer ");
+
+	clearTimeout(timer_sleeping);
+	timer_sleeping = setTimeout(Quizz_sleeping,duree_time_reset*1000);
+}
 
 // joueur object
 
