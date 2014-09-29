@@ -142,11 +142,11 @@ gulp.task('default', function() {
 	gulp.watch(src.img, ['img']);
 });
 
-gulp.task('buildApp', function() {
+gulp.task('prepare', function() {
 	// delete dist folder and rebuild it
 	rimraf(dest.folder, function() {
 		rimraf('webkitbuilds', function() {
-			gulp.start('question', 'media', 'img', 'font', 'usemin', 'nw');
+			gulp.start('question', 'media', 'img', 'font', 'usemin');
 		});
 	});
 });
