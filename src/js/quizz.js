@@ -6,6 +6,7 @@ var JsonArray = "";
 
 var duree_question = 1;
 var duree_reponse = 1;
+var duree_time_reset = 120;
 var secondes = 0;
 var playVideo_onEnd = "";
 
@@ -17,6 +18,7 @@ var gris_wrong_prop = "#e9e5de";
 var timer1;
 var timer2;
 var timer3;
+var timer_sleeping;
 
 // hack to transparently make media work with browser and node webkit
 var currentLocation = window.location.href;
@@ -29,10 +31,16 @@ if (currentLocation.indexOf("index.html") > -1) {
 
 function initMain(){
 
-	//show_ecran("ecran_video");
+	show_ecran("none");
 	currentQuizz = 0;
-	Quizz_ckeckOut();
-	//playVideo("1.1");
+	currentQuestion = 1;
+	reinit_timer_reset();
+	playVideo("1.1");
+
+	clearTimeout(timer1);
+	clearTimeout(timer2);
+	clearTimeout(timer3);
+	$(document).keypress(Touchdown);
 }
 
 // Screen Swith
@@ -66,6 +74,26 @@ function show_ecran(id){
 }
 
 // Gameplay
+
+
+function Touchdown(evenement){
+
+	reinit_timer_reset();
+}
+
+function Quizz_sleeping(){
+
+	//alert("reset App'");
+	initMain();
+}
+
+function reinit_timer_reset(){
+
+	//console.log("reinit timer ");
+
+	clearTimeout(timer_sleeping);
+	timer_sleeping = setTimeout(Quizz_sleeping,duree_time_reset*1000);
+}
 
 function nextQuizz(){
 
@@ -116,7 +144,8 @@ function Quizz_ckeckOut(){
 function Quizz_IsOver(){
 
 	clearTimeout(timer3);
-	playVideo("3.1");
+	if(currentQuizz==4){ initMain(); }
+	else{	playVideo("3.1"); }
 }
 
 function nextQuestion(){
@@ -356,6 +385,7 @@ function traitement(evenement){
 			break;
 	}
 	updateScores();
+	reinit_timer_reset();
 }
 
 function show_multijoueurs_mode(){
@@ -415,11 +445,8 @@ function playVideo(id){
 	switch(id) {
 
 		case "1.1":
-
 			videoFile = currentLocation + "media/1.1Titre_entree.webm";
-			//playVideo_onEnd = "1.2";
-			//toDoOnEnd = function() { playVideo("nextQuizzEntree");  };
-
+			toDoOnEnd = function() { playVideo("1.2");  };
 		break;
 		case "1.2":
 			toDoOnEnd = "" ;
@@ -429,15 +456,14 @@ function playVideo(id){
 		break;
 		case "1.3":
 			document.getElementById("videoclip").onclick=function(){ /*nothing*/ };
-
-			//toDoOnEnd = function() { playVideo("2.1");  };
+			toDoOnEnd = function() { playVideo("2.1");  };
 			videoFile = currentLocation + "media/1.3Titre_sortie.webm";
 
 		break;
 		case "2.1":
 
 			videoFile = currentLocation + "media/2.1_principe_jeu.webm";
-			//toDoOnEnd = function() { playVideo("3.1)";  };
+			toDoOnEnd = function() { playVideo("3.1");  };
 
 		break;
 		case "3.1":
