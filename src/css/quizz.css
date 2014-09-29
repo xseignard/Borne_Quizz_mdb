@@ -8,42 +8,13 @@
   src: url('../font/OpenSans-Light.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
-* {
-	border: 0;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	outline: none;
-	text-decoration: none;
-	color: #000;
-}
+* {	border: 0; margin: 0; padding: 0; list-style: none; outline: none; text-decoration: none; }
+html { display: table; table-layout: fixed; width: 100%; height: 100%; }
+body { display: table-cell; width: 100%; height: 100%; vertical-align: middle; margin:0; font-size: 50px; font-family: 'Open Sans', sans-serif; background-color: #f8f3ea;}
+a{  color:#000;  }
+/* main */
 
-html {
-	display: table;
-	table-layout: fixed;
-	width: 100%; height: 100%;
-}
-
-body {
-	display: table-cell;
-	width: 100%; height: 100%;
-	vertical-align: middle;
-	margin:0;
-	font-size: 50px;
-	font-family: 'Open Sans', sans-serif;
-	background-color: #f8f3ea;
-}
-.main {
-	background:url("../img/bg.gif");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	width: 1920px; height: 1080px;
-	margin: auto;
-	padding: 0;
-	box-shadow: 0px 0px 45px #c9c5be;
-}
-
-
+.main { color:#000; background:url("../img/bg.gif"); background-size: 100% 100%; background-repeat: no-repeat; width: 1920px; height: 1080px; margin: auto; padding: 0; box-shadow: 0px 0px 45px #c9c5be;}
 
 /* ecran vidéo */
 
@@ -63,34 +34,20 @@ body {
 
 #zone_question{ position: absolute; width: 70%; margin: 0% 15% 0 15%; top:250px; letter-spacing: 0.01em; }
 #question{  position: relative; border:0px solid red;  width: 100%; font-size: 1.15em; }
-#illus_question { position: absolute; top: 360px; right: 400px; width: 550px;    }
+#illus_question { position: absolute; top: 320px; right: 400px; width: 600px;    }
 #zone_propositions { border:0px solid red;  position: relative; font-size: 1.15em; margin-top: 60px;  }
-.proposition {  position: relative; display: block; height: 110px; width: 100% ; margin:  20px 0 0 0; }
-.proposition a{ margin-left: 30px }
-.puce {   position: relative; display: block; 	width: 70px; height: 70px; 	background: #918f88;
+#zone_propositions .proposition {  position: relative; display: block; height: 110px; width: 100% ; margin:  20px 0 0 0; }
+#zone_propositions .proposition a{ margin-left: 30px }
+#zone_propositions .proposition .puce {   position: relative; display: block; 	width: 70px; height: 70px; 	background: #918f88;
 	top: 3px; left: 20px; float: left; margin-right: 30px;  -ms-transform: rotate(45deg);  -webkit-transform: rotate(45deg); transform: rotate(45deg);}
-.puce_letter{  position: absolute ;width: 45px; height: 45px; top: 12px; left: 32px }
-
-#zone_reponse{ z-index: 10; position: absolute; display: block;width: 1920px; height: 1080px;  background: #fff; text-align: center;
-	background:url("../img/bg.gif"); background-size: 100% 100%; font-size: 1.15em;margin:0; padding: 0   }
-
-#zone_reponse .txt{ position: absolute; width: 70%; height: 80%; margin: 10% 15% 0 15%;  }
-#zone_reponse video{ background: none; position: absolute; display: block; width: 1920px; height: 1080px; top: 0px; left: 0px; }
-
-
+#zone_propositions .proposition .puce_letter{  position: absolute ;width: 45px; height: 45px; top: 12px; left: 32px }
 
 #footer{ position: absolute; letter-spacing: -2px; bottom: 65px; height: 105px; font-size: 0.85em; width: 80%; margin-left: 10%;background-size: 100% 100%;  background-repeat: no-repeat;}
 #footer ul { margin: 0 20px; padding: 0 }
 #footer li{ float: left; margin: 8px 40px 0 20px; width:330px; padding: 0}
 #footer span{ float: left; display: inline-block; margin: 12px 5px;  border-right : 1.5px solid #fff; padding-right: 15px; }
-
-
-#footer .score{ border : none; width: 80px; height : 75px; display: inline-block; margin: 3px 0 0 5px; padding: 0; background: red;
-background: url("../img/scores_line.png"); background-size: 100% auto;
-background-repeat: repeat-y;  -webkit-transition: background-position 0.5s ease-out;}
-
-
-#footer .icon{ float: right;    width: 60px; height: 60px; background-position: 0 0%; display: block; margin: 15px 5px; background: url("../img/icon_winlost.png");  background-size: 100% 300%;}
+#footer .score{ border : none; width: 80px; height : 75px; display: inline-block; margin: 3px 0 0 5px; padding: 0; background: red; background: url("../img/scores_line.png"); background-size: 100% auto; background-repeat: repeat-y;  -webkit-transition: background-position 0.5s ease-out;}
+#footer .icon{ float: right; transform: translate3d(0px, 0px, 0px);  width: 60px; height: 60px; background-position: 0 0%; display: block; margin: 15px 5px; background: url("../img/icon_winlost.png");  background-size: 100% 300%;}
 .footer_q1{ background: url("../img/footer_q1.png"); }
 .footer_q2{ background: url("../img/footer_q2.png"); }
 .footer_q3{ background: url("../img/footer_q3.png"); }
@@ -99,3 +56,25 @@ background-repeat: repeat-y;  -webkit-transition: background-position 0.5s ease-
 #gifTimer{ position: absolute; right: 15%;bottom: 40px;width: 160px;height: 160px; }
 #gifTimer img{ width: 100%; height: 100%; display: none }
 #gifTimer span{ position: absolute; font-size: 0.8em; top: 50px; left: 70px }
+
+/* ecran reponse */
+
+#zone_reponse{ z-index: 10; position: absolute; display: block;width: 1920px; height: 1080px;  background: #fff; text-align: center; background:url("../img/bg.gif"); background-size: 100% 100%; font-size: 1.15em;margin:0; padding: 0   }
+#zone_reponse .txt{ position: absolute; width: 70%; height: 80%; margin: 10% 15% 0 15%;font-size: 1.1em; letter-spacing: 0 }
+#zone_reponse .img_reponse{ position: absolute; width: 1920px; height: 1080px; top:0; left: 0; }
+#zone_reponse video{ background: none; position: absolute; display: block; width: 1920px; height: 1080px; top: 0px; left: 0px; }
+
+/* ecran resultat */
+
+#ecran_resultat { z-index: 10;  position: absolute;  width: 1920px; height: 1080px; }
+#ecran_resultat .txt{ text-align: center; display: block; font-size: 1.6em; width: 100%; margin: 230px 0 60px 0; color: #ec7a34 }
+#ecran_resultat .txt2{ margin-top: 150px }
+#ecran_resultat ul{ width: 70%; margin: 0 15%; display: inline-block;  font-size: 1.3em; }
+#ecran_resultat li.score{ width: 28%; float:left; margin: 2%; text-align: center; }
+#ecran_resultat .intitule{ width: 100%; height: 90px; display: inline-block; padding-top: 4px; color: #fff7ea;  background: url("../img/resultat_bg_joueur_q1.png"); background-size: 100% 100%; }
+#ecran_resultat .score{  width:  100%; height: 90px; display: inline-block;  padding-top: 4px; }
+
+
+
+
+
