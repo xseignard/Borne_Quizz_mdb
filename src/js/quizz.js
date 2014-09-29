@@ -4,8 +4,9 @@ var bonne_reponse = "???";
 var url = "question/quizz.json";
 var JsonArray = "";
 
-var duree_question = 1;
-var duree_reponse = 1;
+var duree_question = 4;
+var duree_reponse = 3;
+var duree_reponse_txt = 7;
 var duree_time_reset = 120;
 var secondes = 0;
 var playVideo_onEnd = "";
@@ -150,7 +151,7 @@ function Quizz_IsOver(){
 
 function nextQuestion(){
 
-	if(currentQuestion<3/*JsonArray.length-1*/){
+	if(currentQuestion< Number(JsonArray.length)-1){
 		currentQuestion++;
 		question_CheckIn();
 	}else{ Quizz_ckeckOut() }
@@ -313,7 +314,7 @@ function showReponse(){
 			$("#zone_reponse .txt").delay( 3500 ).fadeIn( 600 );
 		}
 		$( "#zone_reponse" ).delay( duree_reponse*1000 ).fadeIn( 400 );
-		timer2 = setTimeout(question_CheckOut,duree_reponse*2000);
+		timer2 = setTimeout(question_CheckOut,duree_reponse_txt*1000);
 	}else{
 		$("#zone_reponse .txt").html( "" );
 		if(JsonArray[i].reponse_anim != "none"){
@@ -461,7 +462,6 @@ function playVideo(id){
 
 		break;
 		case "2.1":
-
 			videoFile = currentLocation + "media/2.1_principe_jeu.webm";
 			toDoOnEnd = function() { playVideo("3.1");  };
 
@@ -485,6 +485,7 @@ function playVideo(id){
 	console.log("onEnd = "+toDoOnEnd);
 
 	$("#videoclip").bind("ended", toDoOnEnd);
+	//document.getElementById("videoclip").onended=toDoOnEnd;
 
 	$('#ecran_video  #videoclip source').attr('src', videoFile);
 	TweenLite.fromTo("#ecran_video  #videoclip", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
