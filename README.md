@@ -34,7 +34,7 @@ Il y a 2 builds:
   - surveille les changements sur les fichiers sources et relance le build a chaque modif et rafraichi le navigateur avec ces modifs
   - le résultat du build se retrouve dans le dossier `dist`
 
-- un build sous forme d'app avec node webkit, qui se lance avec la commande `gulp buildApp`
+- un build sous forme d'app avec node webkit, qui se lance avec la commande `gulp prepare && gulp nw`
   - il crée les executables pour les plateformes suivantes: windows, mac et linux 64
   - ces executables se retrouvent dans le dossier `webkitbuilds`
   - il faut relancer `gulp buildApp` à chaque fois que l'on veut faire une nouvelle version de l'app.

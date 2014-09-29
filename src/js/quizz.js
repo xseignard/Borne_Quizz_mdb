@@ -16,6 +16,11 @@ var gris_wrong_prop = "#e9e5de";
 var timer1;
 var timer2;
 
+// hack to transparently make media work with browser and node webkit
+var currentLocation = window.location.href;
+if (currentLocation.indexOf("index.html") > -1) {
+	currentLocation = currentLocation.substr(0, currentLocation - "index.html".length);
+}
 
 
 // Main init
@@ -252,7 +257,7 @@ function showReponse(){
 		$("#zone_reponse .txt").html( "" );
 		if(JsonArray[i].reponse_anim != "none"){
 			$("#zone_reponse video").delay( 3000 ).fadeIn( 400 );
-			videoFile = "../media/"+JsonArray[i].reponse_anim;
+			videoFile = currentLocation + "media/"+ JsonArray[i].reponse_anim;
 			console.log("load video "+videoFile);
 			$("#zone_reponse video").bind("ended", function() { question_CheckOut(); $("#zone_reponse video").delay( 1000 ).fadeOut(); } );
 			$('#zone_reponse video source').attr('src', videoFile);
@@ -342,15 +347,15 @@ function playVideo(id){
 	handler = function(){
 		console.log("remove listener bordel ! ");
 		document.getElementById("videoclip").removeEventListener("click", handler);
-        playVideo("1.3");
-    };
+		playVideo("1.3");
+	};
 
 	$('#ecran_video video').prop('loop', false)
 
 	switch(id) {
 
 		case "1.1":
-			videoFile = "../media/1.1Titre_entree.mp4";
+			videoFile = currentLocation + "media/1.1Titre_entree.webm";
 			playVideo_onEnd = "1.2";
 			//playVideo_onEnd = "nextQuizzEntree";
 		break;
@@ -358,35 +363,35 @@ function playVideo(id){
 		case "1.2":
 			playVideo_onEnd = "non";
 			$('#ecran_video video').prop('loop', true);
-			videoFile = "../media/1.2Titre_boucle.mp4";
+			videoFile = currentLocation + "media/1.2Titre_boucle.webm";
 			document.getElementById("videoclip").onclick=function(){ playVideo("1.3") };
 		break;
 
 		case "1.3":
 			document.getElementById("videoclip").onclick=function(){ /*nothing*/ };
 			playVideo_onEnd = "2.1";
-			videoFile = "../media/1.3Titre_sortie.mp4";
+			videoFile = currentLocation + "media/1.3Titre_sortie.webm";
 		break;
 
 		case "2.1":
-			videoFile = "../media/2.1_principe_jeu.mp4";
+			videoFile = currentLocation + "media/2.1_principe_jeu.webm";
 			playVideo_onEnd = "3.1";
 		break;
 
 		case "3.1":
-			videoFile = "../media/3.1_choix_quiz_entree.mp4";
+			videoFile = currentLocation + "media/3.1_choix_quiz_entree.webm";
 			playVideo_onEnd = "nextQuizzEntree";
 		break;
 
 		case "nextQuizzEntree":
 			playVideo_onEnd = "non";
 			$("#ecran_video video").bind("ended", function() { playVideo("empty"); nextQuizz();  } );
-			videoFile = "../media/3.2_choix_quiz_sortie_"+Number(currentQuizz+1)+".mp4";
+			videoFile = currentLocation + "media/3.2_choix_quiz_sortie_"+Number(currentQuizz+1)+".webm";
 			//alert(videoFile);
 		break;
 
 		case "Q4":
-			videoFile = "../media/2.Q04_Guesclin.mp4";
+			videoFile = currentLocation + "media/2.Q04_Guesclin.webm";
 			playVideo_onEnd = "non";
 		break;
 
