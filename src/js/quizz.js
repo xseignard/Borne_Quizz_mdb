@@ -458,7 +458,8 @@ function playVideo(id){
 
 	console.log("onEnd = "+toDoOnEnd);
 
-	document.getElementById("videoclip").onended = toDoOnEnd;
+	$("#videoclip").bind("ended", toDoOnEnd);
+
 	$('#ecran_video  #videoclip source').attr('src', videoFile);
 	TweenLite.fromTo("#ecran_video  #videoclip", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
 	$("#ecran_video  #videoclip")[0].load();
