@@ -1,3 +1,6 @@
+var main_width = 1920;
+var main_height = 1080;
+
 var currentQuizz = 0;
 var currentQuestion = 1;
 var bonne_reponse = "???";
@@ -40,9 +43,9 @@ function initMain(){
 	currentQuizz = 0;
 	currentQuestion = 1;
 	reinit_timer_reset();
-	playVideo("1.1");
+	//playVideo("1.1");
  	showQuizz = false;
-
+nextQuizz();
 	clearTimeout(timer1);
 	clearTimeout(timer2);
 	clearTimeout(timer3);
@@ -468,27 +471,6 @@ function playVideo(id){
 	});
 }
 
-/*
-
-	// cloning the video will remove all previous event listeners on it
-	var old_video = document.getElementById("videoclip");
-	var new_video = old_video.cloneNode(true);
-	new_video.addEventListener("ended", toDoOnEnd);
-	new_video.style.display = 'none';
-	new_video.style.width = '1px';
-	new_video.style.height = '1px';
-	new_video.src = videoFile;
-	new_video.addEventListener("play", function() {
-		new_video.style.width = '1920px';
-		new_video.style.height = '1080px';
-		new_video.style.display = 'block';
-	});
-	// add the new video, it will be autoplyed because of autoplay attribute
-	document.getElementById("ecran_video").replaceChild(new_video, old_video);
-	//new_video.src = videoFile;
-
-*/
-
 
 // gestion du reset
 
@@ -565,4 +547,77 @@ var joueur3 = new joueur("joueur 3");
 
 // Main init
 
+
+
+// resize
+
+window.addEventListener("resize", resize_window);
+
+function resize_window(){
+
+
+	var rapport_hauteurLargeur = ($(document).width()/$(document).height())-(main_width/main_height);
+	if(rapport_hauteurLargeur<0){
+		//console.log("ecran trop 4/3 -> calcul de la longueur");
+		if($(document).width()<main_width){
+			new_height = Math.round((main_height/main_width)*$(document).width());
+			$(".main").css("height",new_height)
+		}else{
+			$(".main").css("height",main_height);
+		}
+	}else{
+		//console.log("ecran trop 16/9 -> hauteur ecran / calcul de la longueur");
+		new_height = $(document).height();
+		$(".main").css("height",new_height);
+		new_width = Math.round((main_width/main_height)*$(document).height());
+		$(".main").css("width",new_width);
+	}
+}
+
+function auto_resize(){
+
+$(".auto_resize").each(function(){
+		// if width is defined with PX
+		console.log($(this).css("width").substring( $(this).css("width").length-2, $(this).css("width").length) );
+		if(  $(this).css("width").substring( $(this).css("width").length-2, $(this).css("width").length) == "px" ){
+			css_px = $(this).css("width").substring(  0 , $(this).css("width").length-2 );
+			css_pc = Math.round(css_px*100/main_width*100)/100+"%";
+			$(this).css("width",css_pc);
+		}
+
+		// if left is defined with PX
+		if(  $(this).css("left").substring( $(this).css("left").length-2, $(this).css("left").length) == "px" ){
+			console.log("modif left of"+ $(this).name)
+			css_px = $(this).css("left").substring(  0 , $(this).css("left").length-2 );
+			css_pc = Math.round(css_px*100/main_width*100)/100+"%";
+			$(this).css("left",css_pc);
+		}
+
+		// if height is defined with PX
+		if(  $(this).css("height").substring( $(this).css("height").length-2, $(this).css("height").length) == "px" ){
+			css_px = $(this).css("height").substring(  0 , $(this).css("height").length-2 );
+			css_pc = Math.round(css_px*100/main_height*100)/100+"%";
+			$(this).css("height",css_pc);
+		}
+		// if top is defined with PX
+		if(  $(this).css("top").substring( $(this).css("top").length-2, $(this).css("top").length) == "px" ){
+			css_px = $(this).css("top").substring(  0 , $(this).css("top").length-2 );
+			css_pc = Math.round(css_px*100/main_height*100)/100+"%";
+			$(this).css("top",css_pc);
+		}
+		// if bottom is defined with PX
+		if(  $(this).css("bottom").substring( $(this).css("bottom").length-2, $(this).css("bottom").length) == "px" ){
+			css_px = $(this).css("bottom").substring(  0 , $(this).css("bottom").length-2 );
+			css_pc = Math.round(css_px*100/main_height*100)/100+"%";
+			$(this).css("bottom",css_pc);
+		}
+	});
+}
+
+resize_window();
 initMain();
+auto_resize();
+
+
+
+
