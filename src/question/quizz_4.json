@@ -6,7 +6,7 @@
 		"proposition_b": "2 ans",
 		"proposition_c": "22 ans",
 		"bonne_reponse": "a",
-		"reponse": "Après une condamnation au bagne en 1894, Dreyfus est rejugé en 1899… et à nouveau condamné. Mais le jugement est vivement critiqué et Dreyfus bénéficie d’une grâce présidentielle avant sa totale réhabilitation en 1906. ",
+		"reponse": "<span>Après une condamnation au bagne en 1894, Dreyfus est rejugé en 1899… et à nouveau condamné. Mais le jugement est vivement critiqué et Dreyfus bénéficie d’une grâce présidentielle avant sa totale réhabilitation en 1906. </span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -56,7 +56,7 @@
 		"proposition_b": "Les Barbus",
 		"proposition_c": "Les Poilus",
 		"bonne_reponse": "c",
-		"reponse": "«Le « poilu » […] c’est l’homme qui a du poil au bon endroit, pas dans la main ! » <br>(Albert Dauzat, linguiste, 1918).<br>C’est donc un symbole de courage et de virilité. ",
+		"reponse": "<span>«Le « poilu » […] c’est l’homme qui a du poil au bon endroit, pas dans la main ! » <br>(Albert Dauzat, linguiste, 1918).<br>C’est donc un symbole de courage et de virilité. </span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -66,7 +66,7 @@
 		"proposition_b": "Une veste bleue et un pantalon rouge",
 		"proposition_c": "Une veste et un pantalon bleus",
 		"bonne_reponse": "b",
-		"reponse": "En 1914, les soldats partent au front avec des tenues héritées de la guerre de 1870. Elégantes mais trop voyantes, elles ne sont pas adaptées à la guerre de tranchées et seront remplacées dès 1915 par une tenue bleu horizon avec un casque. ",
+		"reponse": "<span>En 1914, les soldats partent au front avec des tenues héritées de la guerre de 1870. Elégantes mais trop voyantes, elles ne sont pas adaptées à la guerre de tranchées et seront remplacées dès 1915 par une tenue bleu horizon avec un casque. </span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -82,9 +82,9 @@
 	{
 		"question": "Quel est l'état d'esprit des Français après la Deuxième Guerre mondiale ?",
 		"question_img": "none",
-		"proposition_a": "Les Français perdent confiance en l'idée de progrès",
-		"proposition_b": "Les Français rêvent du modèle économique américain",
-		"proposition_c": "Les Français veulent instaurer un nouvel ordre moral",
+		"proposition_a": "<span style='font-size:0.9em'>Les Français perdent confiance en l'idée de progrès</span>",
+		"proposition_b": "<span style='font-size:0.9em'>Les Français rêvent du modèle économique américain</span>",
+		"proposition_c": "<span style='font-size:0.9em'>Les Français veulent instaurer un nouvel ordre moral</span>",
 		"bonne_reponse": "b",
 		"reponse": "none",
 		"reponse_anim": "none"
