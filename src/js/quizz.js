@@ -472,7 +472,11 @@ function playVideo(id){
 */
 	console.log("playVideo function id = "+id);
 	console.log("onEnd = "+toDoOnEnd);
-	document.getElementById("videoclip").addEventListener("ended", toDoOnEnd);
+	// cloning the video will remove all previous event listeners on it
+	var old_video = document.getElementById("videoclip");
+	var new_video = old_video.cloneNode(true);
+	old_video.parentNode.replaceChild(new_video, old_video);
+	new_video.addEventListener("ended", toDoOnEnd);
 	$('#ecran_video  #videoclip source').attr('src', videoFile);
 	TweenLite.fromTo("#ecran_video  #videoclip", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
 	$("#ecran_video  #videoclip")[0].load();
