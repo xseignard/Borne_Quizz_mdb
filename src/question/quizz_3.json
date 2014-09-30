@@ -46,7 +46,7 @@
 		"proposition_b": "La main sur l'estomac",
 		"proposition_c": "Au garde-à-vous",
 		"bonne_reponse": "b",
-		"reponse": "La main sur l’estomac de Napoléon a fait couler beaucoup d’encre ! Il semble cependant qu’il s’agisse d’une posture communément adoptée par les hommes de l’époque afin d’éviter les bras ballants, posture alors inconvenante. ",
+		"reponse": "<span>La main sur l’estomac de Napoléon a fait couler beaucoup d’encre ! Il semble cependant qu’il s’agisse d’une posture communément adoptée par les hommes de l’époque afin d’éviter les bras ballants, posture alors inconvenante.</span>",
 		"reponse": "none",
 		"reponse_anim": "none"
 	},

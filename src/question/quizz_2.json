@@ -1,6 +1,6 @@
 [
 	   {
-		"question": "François Ier était réputé pour être :",
+		"question": "François I<sup>er</sup> était réputé pour être :",
 		"question_img": "none",
 		"proposition_a": "Petit",
 		"proposition_b": "Galant",
@@ -40,13 +40,13 @@
 		"reponse_anim": "none"
 	},
 	{
-		"question": "Qu'est-ce qu'Henri IV voulait donner à manger aux français ?",
+		"question": "<span style='font-size:0.95em'>Qu'est-ce qu'Henri IV voulait donner à manger aux français ?</span>",
 		"question_img": "none",
 		"proposition_a": "Un bœuf bourguignon",
 		"proposition_b": "Une poule au pot",
 		"proposition_c": "Un pot au feu",
 		"bonne_reponse": "b",
-		"reponse": "« Si Dieu me donne encore de la vie je ferai qu’il n’y aura point de laboureur en mon Royaume qui n’ait moyen d’avoir une poule dans son pot. » ",
+		"reponse": "<span>« Si Dieu me donne encore de la vie je ferai qu’il n’y aura point de laboureur en mon Royaume qui n’ait moyen d’avoir une poule dans son pot. » </span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -82,11 +82,11 @@
 	{
 		"question": "Comment appelait-on ces personnages de la Révolution Française ?",
 		"question_img": "none",
-		"proposition_a": "1.Les sans-culottes",
-		"proposition_b": "2.Les culottes rayées",
-		"proposition_c": "3.Les culottes rouges",
+		"proposition_a": "Les sans-culottes",
+		"proposition_b": "Les culottes rayées",
+		"proposition_c": "Les culottes rouges",
 		"bonne_reponse": "a",
-		"reponse": "En 1789, l’on nomme  - non sans mépris - « sans-culottes » les manifestants populaires qui portent des pantalons au lieu des « culottes » avec bas réservées aux nobles et aux bourgeois. ",
+		"reponse": "<span>En 1789, l’on nomme  - non sans mépris - « sans-culottes » les manifestants populaires qui portent des pantalons au lieu des « culottes » avec bas réservées aux nobles et aux bourgeois.</span>",
 		"reponse_anim": "none"
 	},
 	{

@@ -8,6 +8,7 @@ var duree_question = 2;//4;
 var duree_reponse = 1;//3;
 var duree_reponse_txt = 2;//7;
 var duree_time_reset = 120;
+var duree_affichage_resultats = 18;
 var secondes = 0;
 var playVideo_onEnd = "";
 var waitForStart = false;
@@ -21,6 +22,8 @@ var timer1;
 var timer2;
 var timer3;
 var timer_sleeping;
+
+var showQuizz = false;
 
 // hack to transparently make media work with browser and node webkit
 var currentLocation = window.location.href;
@@ -38,38 +41,33 @@ function initMain(){
 	currentQuestion = 1;
 	reinit_timer_reset();
 	playVideo("1.1");
+ 	showQuizz = false;
 
 	clearTimeout(timer1);
 	clearTimeout(timer2);
 	clearTimeout(timer3);
 	$(document).keypress(Touchdown);
+
+
 }
 
-// Screen Swith
+// Screen switch
 
 function show_ecran(id){
 
-	//$("#ecran_video video").first().attr('src','')
 	$("#ecran_video").css("display","none");
 	$("#ecran_questions").css("display","none");
 	$("#zone_reponse").css("display","none");
 	$("#ecran_resultat").css("display","none");
 
-
 	switch(id){
 		case "ecran_video":
-			//$("#zone_reponse").css("display","none");
-			//$("#ecran_questions").css("display","none");
 			$("#ecran_video").css("display","block");
 			break;
 		case "questions":
-			//$("#ecran_video video").first().attr('src','')
-			//$("#ecran_video").css("display","none");
-			//$("#zone_reponse").css("display","none");
 			$("#ecran_questions").fadeIn();
 			break;
 		case "ecran_resultat":
-
 			$("#ecran_resultat").fadeIn();
 			break;
 	}
@@ -79,6 +77,7 @@ function show_ecran(id){
 
 function nextQuizz(){
 
+	showQuizz = true;
 	//alert("nextQuizz");
 	show_ecran("questions");
 	if(currentQuizz<4){ currentQuizz=Number(currentQuizz+1); }else{ currentQuizz = 1; }
@@ -90,8 +89,8 @@ function nextQuizz(){
 	$("#num_Question").css("color",currentCouleur);
 	document.getElementById("num_Quizz").className= "num_Quizz_q"+currentQuizz; ;
 	document.getElementById("footer").className= "footer_q"+currentQuizz; ;
-	$("#zone_reponse .txt").css("color",currentCouleur);
-	$("#zone_reponse .txt sup").css("color",currentCouleur);
+	$("#zone_reponse .reponse").css("color",currentCouleur);
+	$("#zone_reponse .reponse sup").css("color",currentCouleur);
 
 	/* init Gameplay */
 	joueur1.initScore();
@@ -120,7 +119,7 @@ function Quizz_ckeckOut(){
 	$("#ecran_resultat .score_j2").html(joueur2.score+" pt");
 	$("#ecran_resultat .score_j3").html(joueur3.score+" pt");
 
-	timer3 = setTimeout(Quizz_IsOver,3000);
+	timer3 = setTimeout(Quizz_IsOver,duree_affichage_resultats*1000);
 }
 
 function Quizz_IsOver(){
@@ -132,10 +131,13 @@ function Quizz_IsOver(){
 
 function nextQuestion(){
 
-	if(currentQuestion< Number(JsonArray.length)-1){
-		currentQuestion++;
-		question_CheckIn();
-	}else{ Quizz_ckeckOut() }
+	if(showQuizz == false){ $("#ecran_questions").css("display","none"); }
+	else{
+		if(currentQuestion< Number(JsonArray.length)-1){
+			currentQuestion++;
+			question_CheckIn();
+		}else{ Quizz_ckeckOut() }
+	}
 }
 
 
@@ -282,22 +284,18 @@ function showReponse(){
 
 	// affichage de la réponse
 	$("#zone_reponse video").css("display","none");
-	$("#zone_reponse .img_reponse").html("");
+	$("#zone_reponse .reponse").html("");
 	var i =  currentQuestion;
 
 	if(JsonArray[i].reponse != "none"){
 
-		if(JsonArray[i].reponse=="img_reponse_Q10"){
-			$("#zone_reponse .img_reponse").html("<img src='/../img/illus/fleur_de_lys.png'>");
-		}
-		else{
-			$("#zone_reponse .txt").html(JsonArray[i].reponse);
-			$("#zone_reponse .txt").delay( 3500 ).fadeIn( 600 );
-		}
+
+		$("#zone_reponse .reponse").html(JsonArray[i].reponse);
+		$("#zone_reponse .reponse").delay( 3500 ).fadeIn( 600 );
 		$( "#zone_reponse" ).delay( duree_reponse*1000 ).fadeIn( 400 );
+
 		timer2 = setTimeout(question_CheckOut,duree_reponse_txt*1000);
 	}else{
-		$("#zone_reponse .txt").html( "" );
 		if(JsonArray[i].reponse_anim != "none"){
 
 			$("#zone_reponse video").delay( duree_reponse*1000 ).fadeIn( 400 );
@@ -487,9 +485,23 @@ function playVideo(id){
 
 function Touchdown(evenement){
 
+	var caractere = String.fromCharCode(evenement.which);
+
 	if(waitForStart==true){
 		waitForStart = false;
 		playVideo("1.3");
+
+		switch(caractere) {
+			case "1": 	currentQuizz = 0;
+				break;
+			case "2": 	currentQuizz = 1;
+				break
+			case "3": 	currentQuizz = 2;
+				break;
+			case "4": 	currentQuizz = 3;
+				break;
+			}
+
 	}
 
 	reinit_timer_reset();
