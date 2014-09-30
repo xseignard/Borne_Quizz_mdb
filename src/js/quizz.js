@@ -407,7 +407,6 @@ function clickAnswer(myAnswer){
 
 function playVideo(id){
 
-	console.log("playVideo function id = "+id);
 
 	show_ecran("ecran_video");
 
@@ -431,7 +430,7 @@ function playVideo(id){
 		break;
 		case "1.2":
 			waitForStart = true; // detetction dans la fonction Touchdown() pour lecture de la vidéo suivante
-			toDoOnEnd = "" ;
+			toDoOnEnd = function() {} ;
 			$('#ecran_video video').prop('loop', true);
 			videoFile = currentLocation + "media/1.2Titre_boucle.webm";
 			//$("#videoclip").bind("click", click_12);
@@ -466,12 +465,13 @@ function playVideo(id){
 	}
 /*
 	if(toDoOnEnd != ""){
-		console.log("onEnd = "+toDoOnEnd);
 		$("#videoclip").bind("ended", toDoOnEnd);
 	}else{
 		$("#videoclip").unbind("ended", false );
 	}
 */
+	console.log("playVideo function id = "+id);
+	console.log("onEnd = "+toDoOnEnd);
 	document.getElementById("videoclip").addEventListener("ended", toDoOnEnd);
 	$('#ecran_video  #videoclip source').attr('src', videoFile);
 	TweenLite.fromTo("#ecran_video  #videoclip", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
