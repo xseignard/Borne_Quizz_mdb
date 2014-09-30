@@ -1,36 +1,36 @@
 [
 		{
-		"question": "31- Combien de temps a duré l'Affaire Dreyfus ?",
+		"question": "Combien de temps a duré l'Affaire Dreyfus ?",
 		"question_img": "none",
 		"proposition_a": "12 ans",
 		"proposition_b": "2 ans",
 		"proposition_c": "22 ans",
 		"bonne_reponse": "a",
-		"reponse": "L'affaire Dreyfus débute en 1894 avec la condamnation au bagne à perpétuité du capitaine pour trahison. Le procès en révision a lieu à Rennes en 1899 et se termine avec une seconde condamnation à 10 ans de détention le 9 septembre 1899. Gracié par le président Émile Loubet le 19 septembre suivant, il est réhabilité et réintègre l'armée en 1906. ",
+		"reponse": "Après une condamnation au bagne en 1894, Dreyfus est rejugé en 1899… et à nouveau condamné. Mais le jugement est vivement critiqué et Dreyfus bénéficie d’une grâce présidentielle avant sa totale réhabilitation en 1906. ",
 		"reponse_anim": "none"
 	},
 	{
-		"question": "32- Comment surnommait-on Georges Clemenceau ?",
+		"question": "Comment surnommait-on Georges Clemenceau ?",
 		"question_img": "none",
 		"proposition_a": "Le Dragon",
 		"proposition_b": "Le Tigre",
 		"proposition_c": "Le Renard",
 		"bonne_reponse": "b",
 		"reponse": "none",
-		"reponse_anim": "none"
+		"reponse_anim": "Q32_clemenso.webm"
 	},
 	{
-		"question": "33- Qui sont Armand Fallières, Félix Faure, Émile Loubet et Raymond Poincaré ?",
+		"question": "Qui sont Armand Fallières, Félix Faure, Émile Loubet et Raymond Poincaré ?",
 		"question_img": "none",
 		"proposition_a": "Des commandants de l'armée",
 		"proposition_b": "Des vainqueurs du Tour de France",
-		"proposition_c": "Des présidents de la IIIe République",
+		"proposition_c": "Des présidents de la III<sup>e</sup> République",
 		"bonne_reponse": "c",
 		"reponse": "none",
 		"reponse_anim": "none"
 	},
 	{
-		"question": "34- Quel président de la IIIe République était réputé pour sa rigidité ?",
+		"question": "Quel président de la III<sup>e</sup> République était réputé pour sa rigidité ?",
 		"question_img": "none",
 		"proposition_a": "Raymond Poincaré",
 		"proposition_b": "Félix Faure",
@@ -40,47 +40,47 @@
 		"reponse_anim": "none"
 	},
 	{
-		"question": "35- Que s'est-il passé en mai 1968 ?",
+		"question": "Que s'est-il passé en mai 1968 ?",
 		"question_img": "none",
 		"proposition_a": "La démission du Président de la République",
 		"proposition_b": "De grandes manifestations partout en France",
 		"proposition_c": "Des Jeux Olympiques",
 		"bonne_reponse": "b",
 		"reponse": "none",
-		"reponse_anim": "none"
+		"reponse_anim": "Q35_Mais_68.webm"
 	},
 	{
-		"question": "36- Comment surnomme-t-on les soldats de la Première Guerre mondiale ?",
+		"question": "Comment surnomme-t-on les soldats de la Première Guerre mondiale ?",
 		"question_img": "none",
 		"proposition_a": "Les Chevelus",
 		"proposition_b": "Les Barbus",
 		"proposition_c": "Les Poilus",
 		"bonne_reponse": "c",
-		"reponse": "L'origine du mot poilu, selon le linguiste Albert Dauzat dans son ouvrage L'Argot de la guerre, d'après une enquête auprès des officiers et soldats , paru en 1918, est la suivante : '' Avant d'être le soldat de la Marne, le '' poilu '' est le grognard d'Austerlitz, ce n'est pas l'homme à la barbe inculte, qui n'a pas le temps de se raser, ce serait trop pittoresque, c'est beaucoup mieux : c'est l'homme qui a du poil au bon endroit, pas dans la main ! '' c'est donc un symbole de courage et de virilité. ",
+		"reponse": "«Le « poilu » […] c’est l’homme qui a du poil au bon endroit, pas dans la main ! » <br>(Albert Dauzat, linguiste, 1918).<br>C’est donc un symbole de courage et de virilité. ",
 		"reponse_anim": "none"
 	},
 	{
-		"question": "37-Au début de la Première Guerre mondiale, quel uniforme portaient les soldats ? ",
+		"question": "Au début de la Première Guerre mondiale, quel uniforme portaient les soldats ? ",
 		"question_img": "none",
 		"proposition_a": "Une veste et un pantalon kaki",
 		"proposition_b": "Une veste bleue et un pantalon rouge",
 		"proposition_c": "Une veste et un pantalon bleus",
 		"bonne_reponse": "b",
-		"reponse": "En 1914, les soldats sont partis au front avec des tenues héritées de la guerre de 1870 : Képi rouge et bleu, pantalon rouge garance, manteau en laine gris-bleu. Le pantalon rouge trop voyant, dont la teinture venait d'Allemagne, est abandonné en 1915 pour une tenue bleu horizon avec un casque. ",
+		"reponse": "En 1914, les soldats partent au front avec des tenues héritées de la guerre de 1870. Elégantes mais trop voyantes, elles ne sont pas adaptées à la guerre de tranchées et seront remplacées dès 1915 par une tenue bleu horizon avec un casque. ",
 		"reponse_anim": "none"
 	},
 	{
-		"question": "38-Comment appelle-t-on la période qui va de 1920 à 1930 ?",
+		"question": "Comment appelle-t-on la période qui va de 1920 à 1930 ?",
 		"question_img": "none",
 		"proposition_a": "Les Années Folles",
 		"proposition_b": "Les Trente Glorieuses",
 		"proposition_c": "La Grande Dépression",
 		"bonne_reponse": "a",
 		"reponse": "none",
-		"reponse_anim": "none"
+		"reponse_anim": "Q38_Annees_folles.webm"
 	},
 	{
-		"question": "39- Quel est l'état d'esprit des Français après la Deuxième Guerre mondiale ?",
+		"question": "Quel est l'état d'esprit des Français après la Deuxième Guerre mondiale ?",
 		"question_img": "none",
 		"proposition_a": "Les Français perdent confiance en l'idée de progrès",
 		"proposition_b": "Les Français rêvent du modèle économique américain",
@@ -90,7 +90,7 @@
 		"reponse_anim": "none"
 	},
 	{
-		"question": "40-Quel slogan de mai 1968 a été réutilisé dans une publicité des supermarchés E. Leclerc ? ",
+		"question": "Quel slogan de mai 1968 a été réutilisé dans une publicité des supermarchés E. Leclerc ? ",
 		"question_img": "none",
 		"proposition_a": "« Il est interdit d'interdire »",
 		"proposition_b": "« Sous les pavés, la plage »",

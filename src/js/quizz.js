@@ -4,12 +4,13 @@ var bonne_reponse = "???";
 var url = "question/quizz.json";
 var JsonArray = "";
 
-var duree_question = 4;
-var duree_reponse = 3;
-var duree_reponse_txt = 7;
+var duree_question = 2;//4;
+var duree_reponse = 1;//3;
+var duree_reponse_txt = 2;//7;
 var duree_time_reset = 120;
 var secondes = 0;
 var playVideo_onEnd = "";
+var waitForStart = false;
 
 var couleur_id_currentQuizz = ["#000000","#0078b4","#a0dcfa","#e66428","#f5b45a"];
 var currentCouleur = "#000";
@@ -415,12 +416,13 @@ function playVideo(id){
     var configOnEnd = true;
     var videoFile = "";
     var toDoOnEnd = function(){};
-	handler = function(){
-		console.log("remove listener bordel ! ");
-		document.getElementById("videoclip").removeEventListener("click", handler);
+	/*click_12 = function(){
+		//document.getElementById("videoclip").removeEventListener("click", click_12);
+		$("#videoclip").unbind("click", false);
+		console.log("unbind");
 		playVideo("1.3");
 	};
-
+*/
 	$('#ecran_video video').prop('loop', false)
 
 	switch(id) {
@@ -430,13 +432,16 @@ function playVideo(id){
 			toDoOnEnd = function() { playVideo("1.2");  };
 		break;
 		case "1.2":
+			waitForStart = true; // detetction dans la fonction Touchdown() pour lecture de la vidéo suivante
 			toDoOnEnd = "" ;
 			$('#ecran_video video').prop('loop', true);
 			videoFile = currentLocation + "media/1.2Titre_boucle.webm";
-			document.getElementById("videoclip").onclick=function(){ playVideo("1.3") };
+			//$("#videoclip").bind("click", click_12);
+			//document.getElementById("videoclip").onclick=function(){ playVideo("1.3") };
+			//document.getElementById("videoclip").addEventListener("click", click_12, false);
 		break;
 		case "1.3":
-			document.getElementById("videoclip").onclick=function(){ /*nothing*/ };
+			//document.getElementById("videoclip").onclick=function(){ /*nothing*/ };
 			toDoOnEnd = function() { playVideo("2.1");  };
 			videoFile = currentLocation + "media/1.3Titre_sortie.webm";
 
@@ -461,17 +466,19 @@ function playVideo(id){
 		break;
 
 	}
-
-	console.log("onEnd = "+toDoOnEnd);
-
-	//$("#videoclip").bind("ended", toDoOnEnd);
+/*
+	if(toDoOnEnd != ""){
+		console.log("onEnd = "+toDoOnEnd);
+		$("#videoclip").bind("ended", toDoOnEnd);
+	}else{
+		$("#videoclip").unbind("ended", false );
+	}
+*/
 	document.getElementById("videoclip").onended=toDoOnEnd;
 
 	$('#ecran_video  #videoclip source').attr('src', videoFile);
 	TweenLite.fromTo("#ecran_video  #videoclip", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
 	$("#ecran_video  #videoclip")[0].load();
-
-
 }
 
 
@@ -479,6 +486,11 @@ function playVideo(id){
 
 
 function Touchdown(evenement){
+
+	if(waitForStart==true){
+		waitForStart = false;
+		playVideo("1.3");
+	}
 
 	reinit_timer_reset();
 }
