@@ -16,6 +16,8 @@ var secondes = 0;
 var playVideo_onEnd = "";
 var waitForStart = false;
 
+var monoJoueurMode = false;
+
 var couleur_id_currentQuizz = ["#000000","#0078b4","#a0dcfa","#e66428","#f5b45a"];
 var currentCouleur = "#000";
 var gris_prop = "#a8a59e";
@@ -49,9 +51,9 @@ function initMain(){
 	clearTimeout(timer2);
 	clearTimeout(timer3);
 	$(document).keypress(Touchdown);
-
 	playVideo("1.1");
 	//nextQuizz();
+	//Quizz_ckeckOut();
 }
 
 // Screen switch
@@ -91,6 +93,11 @@ function nextQuizz(){
 	$("#num_Question").css("color",currentCouleur);
 	document.getElementById("num_Quizz").className= "num_Quizz_q"+currentQuizz; ;
 	document.getElementById("footer").className= "footer_q"+currentQuizz; ;
+
+	/* init Screen */
+	TweenLite.to("#prop_a", 0, {opacity:"0"});
+	TweenLite.to("#prop_b", 0, {opacity:"0"});
+	TweenLite.to("#prop_c", 0, {opacity:"0"});
 
 	/* init Gameplay */
 	joueur1.initScore();
@@ -205,9 +212,15 @@ function waitForAnswer(){
 	joueur3.avote = false;
 
 	$(document).keypress(traitement);
-	document.getElementById("gif_chrono").src = "img/chrono_q"+currentQuizz+".gif?time=" + new Date();
-	secondes = duree_question;
-	loop_CompteArebours();
+
+	//if(monoJoueurMode == false){
+		document.getElementById("gif_chrono").src = "img/chrono_q"+currentQuizz+".gif?time=" + new Date();
+		secondes = duree_question;
+		loop_CompteArebours();
+	//}else{
+	//	document.getElementById("gifTimer").innerHTML = "";
+	//	$("#gifTimer").css("background","none");
+	//}
 }
 
 function updateScores(){
@@ -369,9 +382,12 @@ function show_multijoueurs_mode(){
 
 function show_monojoueurs_mode(){
 
+	console.log("show_monojoueurs_mode");
+	monoJoueurMode = true;
 	$(".score_j1 .intitule").html("Score");
 	$(".score_j2").css("display","none");
 	$(".score_j3").css("display","none");
+	playVideo("1.3");
 }
 
 function clickAnswer(myAnswer){
@@ -387,8 +403,8 @@ function clickAnswer(myAnswer){
 			if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="c")); }
 			break;
 	}
-
-	show_monojoueurs_mode();
+	clearTimeout(timer1);
+	showReponse();
 	updateScores();
 }
 
@@ -398,6 +414,7 @@ function playVideo(id){
 	show_ecran("ecran_video");
 	// init some vars the switch will handle
 	var videoFile = "";
+	var toDoOnClick = function(){};
 	var toDoOnEnd = function(){};
 	var loop = false;
 
@@ -406,28 +423,34 @@ function playVideo(id){
 		case "1.1":
 			videoFile = currentLocation + "media/1.1Titre_entree.webm";
 			toDoOnEnd = function() { playVideo("1.2"); };
+			toDoOnClick = function() { playVideo("1.2"); };
 			break;
 		case "1.2":
 			videoFile = currentLocation + "media/1.2Titre_boucle.webm";
 			toDoOnEnd = function() {} ;
+			toDoOnClick = function() { show_monojoueurs_mode(); } ;
 			loop = true;
 			waitForStart = true; // detetction dans la fonction Touchdown() pour lecture de la vidéo suivante
 			break;
 		case "1.3":
 			videoFile = currentLocation + "media/1.3Titre_sortie.webm";
 			toDoOnEnd = function() { playVideo("2.1"); };
+			toDoOnClick = function() { playVideo("2.1"); };
 			break;
 		case "2.1":
 			videoFile = currentLocation + "media/2.1_principe_jeu.webm";
 			toDoOnEnd = function() { playVideo("3.1"); };
+			toDoOnClick = function() { playVideo("3.1"); };
 			break;
 		case "3.1":
 			videoFile = currentLocation + "media/3.1_choix_quiz_entree.webm";
 			toDoOnEnd = function() { playVideo("nextQuizzEntree"); };
+			toDoOnClick = function() {  };
 			break;
 		case "nextQuizzEntree":
 			videoFile = currentLocation + "media/3.2_choix_quiz_sortie_" + Number(currentQuizz+1) + ".webm";
 			toDoOnEnd = function() { playVideo("noVideo"); nextQuizz(); };
+			toDoOnClick = function() { };
 			break;
 		case "noVideo":
 			break;
@@ -439,6 +462,9 @@ function playVideo(id){
 	var currentVideo = document.getElementById("videoclip");
 	// clone the current video, it will remove all previous event listeners
 	var newVideo = currentVideo.cloneNode(true);
+
+	// bind the click listener
+	newVideo.addEventListener("click", toDoOnClick);
 	// bind the ended listener
 	newVideo.addEventListener("ended", toDoOnEnd);
 	// trick to avoid flickering
@@ -481,6 +507,7 @@ function Touchdown(evenement){
 			}
 
 	}
+	if(caractere=="f"){ Quizz_ckeckOut(); }
 
 	reinit_timer_reset();
 }

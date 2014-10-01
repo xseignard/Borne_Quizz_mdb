@@ -42,6 +42,7 @@ max-width: 1920px; max-height: 1080px; margin: auto; padding: 0; box-shadow: 0px
 #zone_propositions { border:0px solid red;  position: relative; font-size: 1.15em; margin-top: 60px;  }
 #zone_propositions .proposition {  position: relative; display: block; height: 110px; width: 100% ; margin:  20px 0 0 0; }
 #zone_propositions .proposition a{ margin-left: 30px }
+#zone_propositions .proposition a:hover{ color:#666; }
 #zone_propositions .proposition .puce {   position: relative; display: block; 	width: 70px; height: 70px; 	background: #918f88;
 	top: 3px; left: 20px; float: left; margin-right: 30px;  -ms-transform: rotate(45deg);  -webkit-transform: rotate(45deg); transform: rotate(45deg);}
 #zone_propositions .proposition .puce_letter{  position: absolute ;width: 45px; height: 45px; top: 12px; left: 32px }
@@ -99,6 +100,7 @@ max-width: 1920px; max-height: 1080px; margin: auto; padding: 0; box-shadow: 0px
 	#gifTimer{ bottom: 20px; width: 80px;height: 80px; }
 	#gifTimer span{ top: 25px; left: 35px }
 	#ecran_resultat .score{  height: 45px; padding-top: 2px; }
+	#ecran_resultat ul { top: 250px;}
 }
 
 
