@@ -50,8 +50,8 @@ function initMain(){
 	clearTimeout(timer3);
 	$(document).keypress(Touchdown);
 
-	//playVideo("1.1");
-	nextQuizz();
+	playVideo("1.1");
+	//nextQuizz();
 }
 
 // Screen switch
