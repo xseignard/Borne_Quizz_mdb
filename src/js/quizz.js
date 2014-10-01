@@ -7,9 +7,9 @@ var bonne_reponse = "???";
 var url = "question/quizz.json";
 var JsonArray = "";
 
-var duree_question = 2;//4;
-var duree_reponse = 1;//3;
-var duree_reponse_txt = 2;//7;
+var duree_question = 8;
+var duree_reponse = 3;
+var duree_reponse_txt = 7;
 var duree_time_reset = 120;
 var duree_affichage_resultats = 18;
 var secondes = 0;
@@ -43,15 +43,15 @@ function initMain(){
 	currentQuizz = 0;
 	currentQuestion = 1;
 	reinit_timer_reset();
-	playVideo("1.1");
 	showQuizz = false;
-	//nextQuizz();
+
 	clearTimeout(timer1);
 	clearTimeout(timer2);
 	clearTimeout(timer3);
 	$(document).keypress(Touchdown);
 
-
+	//playVideo("1.1");
+	nextQuizz();
 }
 
 // Screen switch
@@ -80,11 +80,10 @@ function show_ecran(id){
 
 function nextQuizz(){
 
+	//console.log("init Quizz N°"+currentQuizz);
 	showQuizz = true;
-	//alert("nextQuizz");
 	show_ecran("questions");
 	if(currentQuizz<4){ currentQuizz=Number(currentQuizz+1); }else{ currentQuizz = 1; }
-	//console.log("init Quizz N°"+currentQuizz);
 
 	/* custom visuals  */
 	currentCouleur = couleur_id_currentQuizz[currentQuizz];
@@ -92,8 +91,6 @@ function nextQuizz(){
 	$("#num_Question").css("color",currentCouleur);
 	document.getElementById("num_Quizz").className= "num_Quizz_q"+currentQuizz; ;
 	document.getElementById("footer").className= "footer_q"+currentQuizz; ;
-	$("#zone_reponse .reponse").css("color",currentCouleur);
-	$("#zone_reponse .reponse sup").css("color",currentCouleur);
 
 	/* init Gameplay */
 	joueur1.initScore();
@@ -151,8 +148,7 @@ function question_CheckIn(){
 	updateScores();
 
 	//console.log("// function question_CheckIn");
-	$("#gifTimer img").attr('display',"none");
-	$("#gifTimer img").attr('src',"");
+
 
 	var i = currentQuestion;
 	updateScores();
@@ -204,18 +200,12 @@ function question_CheckIn(){
 
 function waitForAnswer(){
 
-//	console.log("// function waitForAnswer");
-	//waitForAnswer
 	joueur1.avote = false;
 	joueur2.avote = false;
 	joueur3.avote = false;
 
 	$(document).keypress(traitement);
-	$("#gifTimer span").html("");
-	$("#gifTimer span").fadeIn(100);
-	$("#gifTimer img").fadeIn(100);
-	$("#gifTimer img").attr('src',"img/chrono_q"+currentQuizz+".gif");
-//	console.log("call -> loop_CompteArebours / secondes = "+ secondes);
+	document.getElementById("gif_chrono").src = "img/chrono_q"+currentQuizz+".gif?time=" + new Date();
 	secondes = duree_question;
 	loop_CompteArebours();
 }
@@ -241,6 +231,7 @@ function updateScores(){
 
 function loop_CompteArebours(){
 	if(secondes<0){
+		$("#gifTimer span").html("");
 		clearTimeout(timer1);
 		showReponse();
 	}else{
@@ -257,9 +248,6 @@ function showReponse(){
 	joueur2.avote = true;
 	joueur3.avote = true;
 
-//	console.log("// function showReponse");
-	$("#gifTimer img").fadeOut(200);
-	$("#gifTimer span").fadeOut(400);
 
 	switch(bonne_reponse) {
 		case "a":
@@ -291,10 +279,11 @@ function showReponse(){
 
 
 		$("#zone_reponse .reponse").html(JsonArray[i].reponse);
-		$("#zone_reponse .reponse").delay( 3500 ).fadeIn( 600 );
+		$("#zone_reponse .reponse").delay( duree_reponse*1000 ).fadeIn( 600 );
+		$("#zone_reponse .reponse").delay( duree_reponse*1000 + duree_reponse_txt*1000  ).fadeOut( 1000 );
 		$( "#zone_reponse" ).delay( duree_reponse*1000 ).fadeIn( 400 );
 
-		timer2 = setTimeout(question_CheckOut,duree_reponse_txt*1000);
+		timer2 = setTimeout(question_CheckOut,(duree_reponse*1000+duree_reponse_txt*1000 + 3000));
 	}else{
 		if(JsonArray[i].reponse_anim != "none"){
 
@@ -328,7 +317,6 @@ function question_CheckOut(){
 	clearTimeout(timer2);
 //	console.log("// function question_CheckOut");
 	var i =  currentQuestion;
-	$("#gifTimer img").attr('src',"");
 	TweenLite.to("#question", 1, { opacity:"0", onComplete:nextQuestion});
 	TweenLite.to("#prop_a", 1, { opacity:"0"});
 	TweenLite.to("#prop_a a", 1, {css:{ color:"#000"}});
@@ -457,14 +445,16 @@ function playVideo(id){
 	// set to display none and size of 1px so the flickering will happen on only 1px
 	// thus invisible for the user
 	newVideo.style.className = "antiflicker";
-	newVideo.src = videoFile;
 	newVideo.loop = loop;
 	// when the new video is playing, reset size and display to its defaults
 	newVideo.addEventListener("play", function() {
 		newVideo.style.className = "";
 		// and finally replace the video in the DOM
+		console.log('play');
 		document.getElementById("ecran_video").replaceChild(newVideo, currentVideo);
 	});
+	newVideo.src = videoFile;
+	//newVideo.play();
 }
 
 
@@ -497,8 +487,8 @@ function Touchdown(evenement){
 
 function Quizz_sleeping(){
 
-	alert("reset App'");
-	initMain();
+	//alert("reset App'");
+	//initMain();
 }
 
 function reinit_timer_reset(){
@@ -544,76 +534,10 @@ var joueur3 = new joueur("joueur 3");
 // Main init
 
 
+window.onload=function(){
 
-// resize
-
-window.addEventListener("resize", resize_window);
-
-function resize_window(){
-
-
-	var rapport_hauteurLargeur = ($(document).width()/$(document).height())-(main_width/main_height);
-	if(rapport_hauteurLargeur<0){
-		//console.log("ecran trop 4/3 -> calcul de la longueur");
-		if($(document).width()<main_width){
-			new_height = Math.round((main_height/main_width)*$(document).width());
-			$(".main").css("height",new_height)
-		}else{
-			$(".main").css("height",main_height);
-		}
-	}else{
-		//console.log("ecran trop 16/9 -> hauteur ecran / calcul de la longueur");
-		new_height = $(document).height();
-		$(".main").css("height",new_height);
-		new_width = Math.round((main_width/main_height)*$(document).height());
-		$(".main").css("width",new_width);
-	}
-}
-
-function auto_resize(){
-
-$(".auto_resize").each(function(){
-		// if width is defined with PX
-		console.log($(this).css("width").substring( $(this).css("width").length-2, $(this).css("width").length) );
-		if(  $(this).css("width").substring( $(this).css("width").length-2, $(this).css("width").length) == "px" ){
-			css_px = $(this).css("width").substring(  0 , $(this).css("width").length-2 );
-			css_pc = Math.round(css_px*100/main_width*100)/100+"%";
-			$(this).css("width",css_pc);
-		}
-
-		// if left is defined with PX
-		if(  $(this).css("left").substring( $(this).css("left").length-2, $(this).css("left").length) == "px" ){
-			console.log("modif left of"+ $(this).name)
-			css_px = $(this).css("left").substring(  0 , $(this).css("left").length-2 );
-			css_pc = Math.round(css_px*100/main_width*100)/100+"%";
-			$(this).css("left",css_pc);
-		}
-
-		// if height is defined with PX
-		if(  $(this).css("height").substring( $(this).css("height").length-2, $(this).css("height").length) == "px" ){
-			css_px = $(this).css("height").substring(  0 , $(this).css("height").length-2 );
-			css_pc = Math.round(css_px*100/main_height*100)/100+"%";
-			$(this).css("height",css_pc);
-		}
-		// if top is defined with PX
-		if(  $(this).css("top").substring( $(this).css("top").length-2, $(this).css("top").length) == "px" ){
-			css_px = $(this).css("top").substring(  0 , $(this).css("top").length-2 );
-			css_pc = Math.round(css_px*100/main_height*100)/100+"%";
-			$(this).css("top",css_pc);
-		}
-		// if bottom is defined with PX
-		if(  $(this).css("bottom").substring( $(this).css("bottom").length-2, $(this).css("bottom").length) == "px" ){
-			css_px = $(this).css("bottom").substring(  0 , $(this).css("bottom").length-2 );
-			css_pc = Math.round(css_px*100/main_height*100)/100+"%";
-			$(this).css("bottom",css_pc);
-		}
-	});
-}
-
-resize_window();
-initMain();
-auto_resize();
-
+	initMain();
+};
 
 
 

@@ -10,11 +10,13 @@
 
 * {	border: 0; margin: 0; padding: 0; list-style: none; outline: none; text-decoration: none; }
 html { display: table; table-layout: fixed; width: 100%; height: 100%; }
-body { display: table-cell; width: 100%; height: 100%; vertical-align: middle; margin:0; font-size: 2.5vw; font-family: 'Open Sans', sans-serif; background-color: #f8f3ea;}
+body { display: table-cell; width: 100%; height: 100%; vertical-align: middle; margin:0; font-size: 50px; font-family: 'Open Sans', sans-serif; background-color: #f8f3ea;}
 a{  color:#000;  }
 /* main */
 
-.main { position: relative; color:#000; background:url("../img/bg.gif"); background-size: 100% 100%; background-repeat: no-repeat; width:100%; height:100%; max-width: 1920px; max-height: 1080px; margin: auto; padding: 0; box-shadow: 0px 0px 45px #c9c5be; overflow: hidden}
+.main { position: relative; color:#000; background:url("../img/bg.gif"); background-size: 100% 100%;
+background-repeat: no-repeat; width:100%; height:100%;
+max-width: 1920px; max-height: 1080px; margin: auto; padding: 0; box-shadow: 0px 0px 45px #c9c5be; overflow: hidden}
 
 /* ecran vidéo */
 
@@ -27,7 +29,7 @@ a{  color:#000;  }
 /* ecran questions */
 
 #ecran_questions{   }
-#num_Quizz{  position: absolute; width: 15%; height: 8%; top: 6.5%; left: 0; display: block; background-size: 100% auto;  background-repeat: no-repeat; }
+#num_Quizz{ width: 285px; height: 95px; position: absolute; top: 70px; left: 0; display: block; background-size: 100% auto;  background-repeat: no-repeat; }
 .num_Quizz_q1{  background: url("../img/etiquette_q1.png");  }
 .num_Quizz_q2{  background: url("../img/etiquette_q2.png");  }
 .num_Quizz_q3{  background: url("../img/etiquette_q3.png");  }
@@ -36,7 +38,7 @@ a{  color:#000;  }
 
 #zone_question{ position: absolute; width: 70%; margin: 0% 15% 0 15%; top:250px; letter-spacing: -0.05em; }
 #question{  position: relative; border:0px solid red;  width: 100%; font-size: 1.15em; }
-#illus_question { position: absolute; top: 320px; left: 800px; width: 600px;    }
+#illus_question { position: absolute; top: 320px; left: 850px; width: 600px;    }
 #zone_propositions { border:0px solid red;  position: relative; font-size: 1.15em; margin-top: 60px;  }
 #zone_propositions .proposition {  position: relative; display: block; height: 110px; width: 100% ; margin:  20px 0 0 0; }
 #zone_propositions .proposition a{ margin-left: 30px }
@@ -44,20 +46,20 @@ a{  color:#000;  }
 	top: 3px; left: 20px; float: left; margin-right: 30px;  -ms-transform: rotate(45deg);  -webkit-transform: rotate(45deg); transform: rotate(45deg);}
 #zone_propositions .proposition .puce_letter{  position: absolute ;width: 45px; height: 45px; top: 12px; left: 32px }
 
-#footer{ position: absolute; letter-spacing: -2px; bottom: 5.98%; height: 9.66%; font-size: 0.85em; width: 80%; margin-left: 10%;background-size: 100% 100%;  background-repeat: no-repeat;}
+#footer { position: absolute; letter-spacing: -2px; bottom: 65px; height: 105px; font-size: 0.85em; width: 80%; margin-left: 10%;background-size: 100% 100%;  background-repeat: no-repeat;}
 #footer ul { margin: 0 20px; padding: 0 }
-#footer li{ float: left; margin: 8px 40px 0 20px;  padding: 0}
+#footer li{ float: left; margin: 8px 40px 0 20px; width:330px; padding: 0}
 #footer span{ float: left; display: inline-block; margin: 12px 5px;  border-right : 1.5px solid #fff; padding-right: 15px; }
 #footer .score{ border : none; width: 80px; height : 75px; display: inline-block; margin: 3px 0 0 5px; padding: 0; background: red; background: url("../img/scores_line.png"); background-size: 100% auto; background-repeat: repeat-y;  -webkit-transition: background-position 0.5s ease-out;}
-#footer .icon{ float: right;  width: 60px; height: 60px; background-position: 0 0%; display: block; margin: 15px 5px; background: url("../img/icon_winlost.png");  background-size: 100% 300%;}
+#footer .icon{  float: right;  width: 60px; height: 60px; background-position: 0 0%; display: block; margin: 15px 5px; background: url("../img/icon_winlost.png");  background-size: 100% 300%;}
 .footer_q1{ background: url("../img/footer_q1.png"); }
 .footer_q2{ background: url("../img/footer_q2.png"); }
 .footer_q3{ background: url("../img/footer_q3.png"); }
 .footer_q4{ background: url("../img/footer_q4.png"); }
 
-#gifTimer{ position: absolute; right: 15%;bottom:3%; width: 10%; height: 17%; }
-#gifTimer img{ width: 100%; height: 100%; display: none }
-#gifTimer span{ position: absolute; font-size: 0.8em; top: 35%; left: 45% }
+#gifTimer{  position: absolute; right: 15%;bottom: 40px; width: 160px;height: 160px; background:url("../img/bg_chrono.png"); background-size: 100% 100%;  }
+#gifTimer img{ width: 100%; height: 100%;  }
+#gifTimer span{ position: absolute; font-size: 0.8em; top: 50px; left: 70px }
 
 /* ecran reponse */
 
@@ -74,6 +76,28 @@ a{  color:#000;  }
 #ecran_resultat .score{  width:  100%; height: 90px; display: inline-block;  padding-top: 4px; }
 
 
+/* Media queries -- version  50% */
 
+@media screen and (max-width: 1920px) {
+
+	body { font-size: 25px; }
+  	.main { max-width: 960px; max-height: 540px;  }
+	#num_Quizz{ width: 142px; height: 48px; top:35px; }
+	#zone_question{ top:125px; }
+	#zone_propositions { margin-top: 30px;  }
+	#footer{ letter-spacing: -1px; bottom: 33px; height: 52px; }
+	#footer ul { margin: 0 10px; }
+	#footer li{ margin: 4px 20px 0 10px; width:165px;}
+	#footer span{  margin: 6px 2px;  padding-right: 7px; }
+	#footer .score{ width: 40px; height : 38px;  margin: 1px 0 0 2px; }
+	#footer .icon{  width: 30px; height: 30px; margin: 8px 2px;}
+	#illus_question { top: 160px; left: 425px; width: 300px;    }
+	#zone_propositions .proposition {  height: 55px;  margin:  10px 0 0 0; }
+	#zone_propositions .proposition a{ margin-left: 15px }
+	#zone_propositions .proposition .puce {   	width: 35px; height: 35px; 	top: 2px; left: 10px; margin-right: 15px; }
+	#zone_propositions .proposition .puce_letter{  width: 22px; height: 22px; top: 6px; left: 16px }
+	#gifTimer{ bottom: 20px; width: 80px;height: 80px; }
+	#gifTimer span{ top: 25px; left: 35px }
+}
 
 
