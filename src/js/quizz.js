@@ -43,9 +43,9 @@ function initMain(){
 	currentQuizz = 0;
 	currentQuestion = 1;
 	reinit_timer_reset();
-	//playVideo("1.1");
- 	showQuizz = false;
-nextQuizz();
+	playVideo("1.1");
+	showQuizz = false;
+	//nextQuizz();
 	clearTimeout(timer1);
 	clearTimeout(timer2);
 	clearTimeout(timer3);
@@ -456,16 +456,12 @@ function playVideo(id){
 	// trick to avoid flickering
 	// set to display none and size of 1px so the flickering will happen on only 1px
 	// thus invisible for the user
-	newVideo.style.display = "none";
-	newVideo.style.width = "1px";
-	newVideo.style.height = "1px";
+	newVideo.style.className = "antiflicker";
 	newVideo.src = videoFile;
 	newVideo.loop = loop;
 	// when the new video is playing, reset size and display to its defaults
 	newVideo.addEventListener("play", function() {
-		newVideo.style.width = "1920px";
-		newVideo.style.height = "1080px";
-		newVideo.style.display = "block";
+		newVideo.style.className = "";
 		// and finally replace the video in the DOM
 		document.getElementById("ecran_video").replaceChild(newVideo, currentVideo);
 	});
