@@ -109,7 +109,6 @@ function nextQuizz(){
 }
 
 function valideJsonArray(arr) {
-
 	JsonArray = arr;
 	currentQuestion = 0;
 	question_CheckIn();
@@ -241,8 +240,6 @@ function updateScores(){
 }
 
 function loop_CompteArebours(){
-
-
 	if(secondes<0){
 		clearTimeout(timer1);
 		showReponse();
@@ -410,83 +407,68 @@ function clickAnswer(myAnswer){
 
 function playVideo(id){
 
-
 	show_ecran("ecran_video");
+	// init some vars the switch will handle
+	var videoFile = "";
+	var toDoOnEnd = function(){};
+	var loop = false;
 
-    var configOnEnd = true;
-    var videoFile = "";
-    var toDoOnEnd = function(){};
-	/*click_12 = function(){
-		//document.getElementById("videoclip").removeEventListener("click", click_12);
-		$("#videoclip").unbind("click", false);
-		console.log("unbind");
-		playVideo("1.3");
-	};
-*/
-	$('#ecran_video video').prop('loop', false)
-
+	// configure the playback
 	switch(id) {
-
 		case "1.1":
 			videoFile = currentLocation + "media/1.1Titre_entree.webm";
-			toDoOnEnd = function() { playVideo("1.2");  };
-		break;
+			toDoOnEnd = function() { playVideo("1.2"); };
+			break;
 		case "1.2":
-			waitForStart = true; // detetction dans la fonction Touchdown() pour lecture de la vidéo suivante
-			toDoOnEnd = function() {} ;
-			$('#ecran_video video').prop('loop', true);
 			videoFile = currentLocation + "media/1.2Titre_boucle.webm";
-			//$("#videoclip").bind("click", click_12);
-			//document.getElementById("videoclip").onclick=function(){ playVideo("1.3") };
-			//document.getElementById("videoclip").addEventListener("click", click_12, false);
-		break;
+			toDoOnEnd = function() {} ;
+			loop = true;
+			waitForStart = true; // detetction dans la fonction Touchdown() pour lecture de la vidéo suivante
+			break;
 		case "1.3":
-			//document.getElementById("videoclip").onclick=function(){ /*nothing*/ };
-			toDoOnEnd = function() { playVideo("2.1");  };
 			videoFile = currentLocation + "media/1.3Titre_sortie.webm";
-
-		break;
+			toDoOnEnd = function() { playVideo("2.1"); };
+			break;
 		case "2.1":
 			videoFile = currentLocation + "media/2.1_principe_jeu.webm";
-			toDoOnEnd = function() { playVideo("3.1");  };
-
-		break;
+			toDoOnEnd = function() { playVideo("3.1"); };
+			break;
 		case "3.1":
-
 			videoFile = currentLocation + "media/3.1_choix_quiz_entree.webm";
 			toDoOnEnd = function() { playVideo("nextQuizzEntree"); };
-
-		break;
+			break;
 		case "nextQuizzEntree":
-
-			toDoOnEnd = function() {  playVideo("noVideo"); nextQuizz(); } ;
-			videoFile = currentLocation + "media/3.2_choix_quiz_sortie_"+Number(currentQuizz+1)+".webm";
-		break;
+			videoFile = currentLocation + "media/3.2_choix_quiz_sortie_" + Number(currentQuizz+1) + ".webm";
+			toDoOnEnd = function() { playVideo("noVideo"); nextQuizz(); };
+			break;
 		case "noVideo":
-		break;
+			break;
+	}
 
-	}
-/*
-	if(toDoOnEnd != ""){
-		$("#videoclip").bind("ended", toDoOnEnd);
-	}else{
-		$("#videoclip").unbind("ended", false );
-	}
-*/
 	console.log("playVideo function id = "+id);
 	console.log("onEnd = "+toDoOnEnd);
 
-	// cloning the video will remove all previous event listeners on it
-	var old_video = document.getElementById("videoclip");
-	var new_video = old_video.cloneNode(true);
-	old_video.parentNode.replaceChild(new_video, old_video);
-	new_video.addEventListener("ended", toDoOnEnd);
-
-	$('#ecran_video  #videoclip source').attr('src', videoFile);
-	TweenLite.fromTo("#ecran_video  #videoclip", 0.2, {opacity:"0"}, {  delay:0.2, opacity:"1" } );
-	$("#ecran_video  #videoclip")[0].load();
-
-
+	var currentVideo = document.getElementById("videoclip");
+	// clone the current video, it will remove all previous event listeners
+	var newVideo = currentVideo.cloneNode(true);
+	// bind the ended listener
+	newVideo.addEventListener("ended", toDoOnEnd);
+	// trick to avoid flickering
+	// set to display none and size of 1px so the flickering will happen on only 1px
+	// thus invisible for the user
+	newVideo.style.display = "none";
+	newVideo.style.width = "1px";
+	newVideo.style.height = "1px";
+	newVideo.src = videoFile;
+	newVideo.loop = loop;
+	// when the new video is playing, reset size and display to its defaults
+	newVideo.addEventListener("play", function() {
+		newVideo.style.width = "1920px";
+		newVideo.style.height = "1080px";
+		newVideo.style.display = "block";
+		// and finally replace the video in the DOM
+		document.getElementById("ecran_video").replaceChild(newVideo, currentVideo);
+	});
 }
 
 
