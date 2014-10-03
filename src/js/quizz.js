@@ -10,13 +10,13 @@ var JsonArray = "";
 var duree_question = 8;
 var duree_reponse = 3;
 var duree_reponse_txt = 7;
-var duree_time_reset = 120;
 var duree_affichage_resultats = 18;
 var secondes = 0;
 var playVideo_onEnd = "";
 var waitForStart = false;
 
 var monoJoueurMode = false;
+var testNoBody = 0;
 
 var couleur_id_currentQuizz = ["#000000","#0078b4","#a0dcfa","#e66428","#f5b45a"];
 var currentCouleur = "#000";
@@ -44,7 +44,6 @@ function initMain(){
 	show_ecran("none");
 	currentQuizz = 0;
 	currentQuestion = 1;
-	reinit_timer_reset();
 	showQuizz = false;
 
 	clearTimeout(timer1);
@@ -121,9 +120,9 @@ function valideJsonArray(arr) {
 function Quizz_ckeckOut(){
 
 	show_ecran("ecran_resultat");
-	$("#ecran_resultat .score_j1").html(joueur1.score+" pt");
-	$("#ecran_resultat .score_j2").html(joueur2.score+" pt");
-	$("#ecran_resultat .score_j3").html(joueur3.score+" pt");
+	$("#ecran_resultat span.score_j1").html(joueur1.score+" pt");
+	$("#ecran_resultat span.score_j2").html(joueur2.score+" pt");
+	$("#ecran_resultat span.score_j3").html(joueur3.score+" pt");
 
 	timer3 = setTimeout(Quizz_IsOver,duree_affichage_resultats*1000);
 }
@@ -132,7 +131,7 @@ function Quizz_IsOver(){
 
 	clearTimeout(timer3);
 	if(currentQuizz==4){ initMain(); }
-	else{	playVideo("3.1"); }
+	else{	playVideo("1.1_interQuizz"); }
 }
 
 function nextQuestion(){
@@ -212,15 +211,9 @@ function waitForAnswer(){
 	joueur3.avote = false;
 
 	$(document).keypress(traitement);
-
-	//if(monoJoueurMode == false){
-		document.getElementById("gif_chrono").src = "img/chrono_q"+currentQuizz+".gif?time=" + new Date();
-		secondes = duree_question;
-		loop_CompteArebours();
-	//}else{
-	//	document.getElementById("gifTimer").innerHTML = "";
-	//	$("#gifTimer").css("background","none");
-	//}
+	document.getElementById("gif_chrono").src = "img/chrono_q"+currentQuizz+".gif?time=" + new Date();
+	secondes = duree_question;
+	loop_CompteArebours();
 }
 
 function updateScores(){
@@ -326,23 +319,29 @@ function playvidAnswer(){
 
 function question_CheckOut(){
 
-	$("#zone_reponse").delay( 1000 ).fadeOut(1000);
 	clearTimeout(timer2);
-//	console.log("// function question_CheckOut");
-	var i =  currentQuestion;
-	TweenLite.to("#question", 1, { opacity:"0", onComplete:nextQuestion});
-	TweenLite.to("#prop_a", 1, { opacity:"0"});
-	TweenLite.to("#prop_a a", 1, {css:{ color:"#000"}});
-	TweenLite.to("#prop_b", 1, { opacity:"0"});
-	TweenLite.to("#prop_b a", 1, { color:"#000"});
-	TweenLite.to("#prop_c", 1, { opacity:"0"});
-	TweenLite.to("#prop_c a", 1, { color:"#000"});
-	$("#illus_question").fadeOut();
+	testNoBody++;
+	console.log("testNoBody "+testNoBody);
+	if(testNoBody>=3){ main_reset(); } // réinitialisation si aucune réponse deux questions de suite
+	else{
+		$("#zone_reponse").delay( 1000 ).fadeOut(1000);
+	//	console.log("// function question_CheckOut");
+		var i =  currentQuestion;
+		TweenLite.to("#question", 1, { opacity:"0", onComplete:nextQuestion});
+		TweenLite.to("#prop_a", 1, { opacity:"0"});
+		TweenLite.to("#prop_a a", 1, {css:{ color:"#000"}});
+		TweenLite.to("#prop_b", 1, { opacity:"0"});
+		TweenLite.to("#prop_b a", 1, { color:"#000"});
+		TweenLite.to("#prop_c", 1, { opacity:"0"});
+		TweenLite.to("#prop_c a", 1, { color:"#000"});
+		$("#illus_question").fadeOut();
+	}
 }
 
 
 function traitement(evenement){
 
+	testNoBody = 0;
 	show_multijoueurs_mode();
 	var caractere = String.fromCharCode(evenement.which);
 	switch(caractere) {
@@ -366,7 +365,6 @@ function traitement(evenement){
 			break;
 	}
 	updateScores();
-	reinit_timer_reset();
 }
 
 function show_multijoueurs_mode(){
@@ -378,6 +376,8 @@ function show_multijoueurs_mode(){
 	$(".score_j1").css("display","block");
 	$(".score_j2").css("display","block");
 	$(".score_j3").css("display","block");
+
+	$("#ecran_resultat li.score_j1").css("width","27%");
 }
 
 function show_monojoueurs_mode(){
@@ -387,11 +387,16 @@ function show_monojoueurs_mode(){
 	$(".score_j1 .intitule").html("Score");
 	$(".score_j2").css("display","none");
 	$(".score_j3").css("display","none");
+	$("#ecran_resultat").css("background-image","url('../img/bg_ecran_resultats_solo.png')");
+	$("#ecran_resultat li.score_j1").css("width","92%");
+	$("#ecran_resultat li.score_j2").css("display","none");
+	$("#ecran_resultat li.score_j3").css("display","none");
 	playVideo("1.3");
 }
 
 function clickAnswer(myAnswer){
 
+	testNoBody = 0;
 	switch(myAnswer) {
 		case "a":
 			if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="a")); }
@@ -421,37 +426,55 @@ function playVideo(id){
 	// configure the playback
 	switch(id) {
 		case "1.1":
-			videoFile = currentLocation + "media/1.1Titre_entree.webm";
+			videoFile = currentLocation + "media/1.1Titre_entree";
 			toDoOnEnd = function() { playVideo("1.2"); };
 			toDoOnClick = function() { playVideo("1.2"); };
 			break;
+		case "1.1_interQuizz":
+			videoFile = currentLocation + "media/1.1Titre_entree";
+			toDoOnEnd = function() { playVideo("1.3_interQuizz"); };
+			toDoOnClick = function() { playVideo("1.3_interQuizz"); };
+			break;
+
 		case "1.2":
-			videoFile = currentLocation + "media/1.2Titre_boucle.webm";
+			videoFile = currentLocation + "media/1.2Titre_boucle";
 			toDoOnEnd = function() {} ;
 			toDoOnClick = function() { show_monojoueurs_mode(); } ;
 			loop = true;
 			waitForStart = true; // detetction dans la fonction Touchdown() pour lecture de la vidéo suivante
 			break;
 		case "1.3":
-			videoFile = currentLocation + "media/1.3Titre_sortie.webm";
+			videoFile = currentLocation + "media/1.3Titre_sortie";
 			toDoOnEnd = function() { playVideo("2.1"); };
 			toDoOnClick = function() { playVideo("2.1"); };
 			break;
+		case "1.3_interQuizz":
+			videoFile = currentLocation + "media/3.1_choix_quiz_entree";
+			toDoOnEnd = function() { playVideo("3.2"); };
+			toDoOnClick = function() {  playVideo("3.2"); };
+			break;
 		case "2.1":
-			videoFile = currentLocation + "media/2.1_principe_jeu.webm";
+			videoFile = currentLocation + "media/2.1_principe_jeu";
 			toDoOnEnd = function() { playVideo("3.1"); };
 			toDoOnClick = function() { playVideo("3.1"); };
 			break;
 		case "3.1":
-			videoFile = currentLocation + "media/3.1_choix_quiz_entree.webm";
-			toDoOnEnd = function() { playVideo("nextQuizzEntree"); };
-			toDoOnClick = function() {  };
+			videoFile = currentLocation + "media/3.1_choix_quiz_entree";
+			toDoOnEnd = function() { playVideo("3.2"); };
+			toDoOnClick = function() {  playVideo("3.2"); };
 			break;
-		case "nextQuizzEntree":
-			videoFile = currentLocation + "media/3.2_choix_quiz_sortie_" + Number(currentQuizz+1) + ".webm";
+		case "3.2":
+			videoFile = currentLocation + "media/3.2_choix_quiz_sortie_" + Number(currentQuizz+1) ;
+			toDoOnEnd = function() { playVideo("4.1"); };
+			toDoOnClick = function() { playVideo("4.1"); };
+			break;
+		case "4.1":
+			videoFile = currentLocation + "media/4.1_compte_a_rebours";
 			toDoOnEnd = function() { playVideo("noVideo"); nextQuizz(); };
 			toDoOnClick = function() { };
 			break;
+
+
 		case "noVideo":
 			break;
 	}
@@ -479,7 +502,9 @@ function playVideo(id){
 		console.log('play');
 		document.getElementById("ecran_video").replaceChild(newVideo, currentVideo);
 	});
-	newVideo.src = videoFile;
+
+    newVideo.children[0].src = videoFile+".webm";
+    newVideo.children[1].src = videoFile+".mp4";
 	//newVideo.play();
 }
 
@@ -509,22 +534,12 @@ function Touchdown(evenement){
 	}
 	if(caractere=="f"){ Quizz_ckeckOut(); }
 
-	reinit_timer_reset();
 }
 
-function Quizz_sleeping(){
-
-	//alert("reset App'");
-	//initMain();
+function main_reset(){
+	window.location.reload();
 }
 
-function reinit_timer_reset(){
-
-	//console.log("reinit timer ");
-
-	clearTimeout(timer_sleeping);
-	timer_sleeping = setTimeout(Quizz_sleeping,duree_time_reset*1000);
-}
 
 // joueur object
 

@@ -40,7 +40,7 @@
 		"reponse_anim": "none"
 	},
 	{
-		"question": "Dans quelle position Napoléon Ier est-il souvent représenté ?",
+		"question": "Dans quelle position Napoléon I<sup>er</sup> est-il souvent représenté ?",
 		"question_img": "none",
 		"proposition_a": "Le poing en l'air",
 		"proposition_b": "La main sur l'estomac",
@@ -51,7 +51,7 @@
 		"reponse_anim": "none"
 	},
 	{
-		"question": "Dans quel pays Napoléon Ier s'est-il fait battre à plate couture ?",
+		"question": "Dans quel pays Napoléon I<sup>er</sup> s'est-il fait battre à plate couture ?",
 		"question_img": "none",
 		"proposition_a": "Le Portugal",
 		"proposition_b": "L'Allemagne",
@@ -61,7 +61,7 @@
 		"reponse_anim": "none"
 	},
 	{
-		"question": "Quelle est la plus célèbre victoire de Napoléon Ier ?",
+		"question": "Quelle est la plus célèbre victoire de Napoléon I<sup>er</sup> ?",
 		"question_img": "none",
 		"proposition_a": "La bataille d'Austerlitz",
 		"proposition_b": "La bataille de Waterloo",

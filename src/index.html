@@ -13,7 +13,11 @@
 
 	<!-- ecran VIDEO -->
 	<section id="ecran_video" class="ecran">
-		<video id="videoclip" autoplay autobuffer></video>
+		<video id="videoclip" autoplay >
+	        <source src="" type="video/webm" />
+	        <source src="http://localhost:8080/media/1.1Titre_entree.mp4" type="video/mp4" />
+	        <p>You navigator doesn't support HTML5 video!</p>
+	    </video>
 	</section>
 
 	<!-- ecran QUESTIONS -->
@@ -77,13 +81,13 @@
 	<!-- ecran QUESTIONS -->
 	<section id="ecran_resultat" class="ecran">
 		<ul>
-			<li class="score">
+			<li class="score score_j1">
 				<span class="score_j1"></span>
 			</li>
-			<li class="score">
+			<li class="score score_j2">
 				<span class="score_j2"></span>
 			</li>
-			<li class="score">
+			<li class="score score_j3">
 				<span class="score_j3"></span>
 			</li>
 		</ul>

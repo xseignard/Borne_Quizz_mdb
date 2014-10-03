@@ -11,9 +11,9 @@
 		"reponse_anim": "none"
 	},
 	{
-		"question": "<span style='letter-spacing:-0.08em'>Quel roi est connu pour avoir soi-disant inventé l'école ?</span>",
+		"question": "<span style='letter-spacing:-0.07em'>Quel roi est connu pour avoir soi-disant inventé l'école ?</span>",
 		"question_img": "none",
-		"proposition_a": "François Ier",
+		"proposition_a": "François I<sup>er</sup>",
 		"proposition_b": "Charlemagne",
 		"proposition_c": "Le Roi Dagobert",
 		"bonne_reponse": "b",
@@ -27,7 +27,7 @@
 		"proposition_b": "Blanche",
 		"proposition_c": "Il n'avait pas de barbe",
 		"bonne_reponse": "c",
-		"reponse": "<span>Le mot fleuri provient d’une mauvaise interprétation du vieux français flori (blanc) qui renvoie à la barbe blanche des sages. En réalité, Charlemagne était sans doute imberbe !</span>",
+		"reponse": "<span>Le mot fleuri provient d’une mauvaise interprétation du vieux français flori (blanc) qui renvoie à la barbe blanche des sages.<br> En réalité, Charlemagne était sans doute imberbe !</span>",
 		"reponse_anim": "none"
 	},
 	{
