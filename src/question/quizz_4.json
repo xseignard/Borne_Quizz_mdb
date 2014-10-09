@@ -6,7 +6,7 @@
 		"proposition_b": "2 ans",
 		"proposition_c": "22 ans",
 		"bonne_reponse": "a",
-		"reponse": "<span>Après une condamnation au bagne en 1894, Dreyfus est rejugé en 1899… et à nouveau condamné. Mais le jugement est vivement critiqué et Dreyfus bénéficie d’une grâce présidentielle avant sa totale réhabilitation en 1906. </span>",
+		"reponse": "<span class='reponse_100pc'>Après une condamnation au bagne en 1894,<br> Dreyfus est rejugé en 1899… et à nouveau condamné.<br>Mais le jugement est vivement critiqué et Dreyfus bénéficie<br>d’une grâce présidentielle avant sa totale réhabilitation en 1906. </span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -56,7 +56,7 @@
 		"proposition_b": "Les Barbus",
 		"proposition_c": "Les Poilus",
 		"bonne_reponse": "c",
-		"reponse": "<span>«Le « poilu » […] c’est l’homme qui a du poil au bon endroit, pas dans la main ! » <br>(Albert Dauzat, linguiste, 1918).<br>C’est donc un symbole de courage et de virilité. </span>",
+		"reponse": "<span class='reponse_100pc'>«Le “poilu“ […]<br>c’est l’homme qui a du poil au bon endroit, pas dans la main ! »<br><br>Albert Dauzat, linguiste, 1918</span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -66,11 +66,11 @@
 		"proposition_b": "Une veste bleue et un pantalon rouge",
 		"proposition_c": "Une veste et un pantalon bleus",
 		"bonne_reponse": "b",
-		"reponse": "<span>En 1914, les soldats partent au front avec des tenues héritées de la guerre de 1870. Elégantes mais trop voyantes, elles ne sont pas adaptées à la guerre de tranchées et seront remplacées dès 1915 par une tenue bleu horizon avec un casque. </span>",
+		"reponse": "<div class='bg_q47 reponse'><span>En 1914, les soldats partent au front<br>avec des tenues héritées de la guerre de 1870.<br>Elégantes mais trop voyantes (tunique bleue sur pantalon rouge),<br>elles ne sont pas adaptées à la guerre de tranchées<br>et seront remplacées dès 1915<br>par une tenue bleu horizon avec un casque. </span></div>",
 		"reponse_anim": "none"
 	},
 	{
-		"question": "Comment appelle-t-on la période qui va de 1920 à 1930 ?",
+		"question": "<span style='letter-spacing:-0.08em'>Comment appelle-t-on la période qui va de 1920 à 1930 ?</span>",
 		"question_img": "none",
 		"proposition_a": "Les Années Folles",
 		"proposition_b": "Les Trente Glorieuses",

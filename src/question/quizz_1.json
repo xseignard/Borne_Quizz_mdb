@@ -7,7 +7,7 @@
 		"proposition_c": "Aux Gaulois",
 		"bonne_reponse": "c",
 
-		"reponse": "<span>Répandue, l’image du casque ailé viendrait d’une méprise des archéologues du 19<sup>e</sup> siècle ayant assimilé les cache-joues des casques gaulois (paragnathides) à des ailes flottant sur les côtés.</span>",
+		"reponse": "<div class='bg_q1 reponse'><span>Répandue, l’image du casque ailé viendrait d’une méprise des archéologues du 19<sup>e</sup> siècle ayant assimilé les cache-joues des casques gaulois (paragnathides) <br>à des ailes flottant sur les côtés.</span></div>",
 		"reponse_anim": "none"
 	},
 	{
@@ -27,7 +27,7 @@
 		"proposition_b": "Blanche",
 		"proposition_c": "Il n'avait pas de barbe",
 		"bonne_reponse": "c",
-		"reponse": "<span>Le mot fleuri provient d’une mauvaise interprétation du vieux français flori (blanc) qui renvoie à la barbe blanche des sages.<br> En réalité, Charlemagne était sans doute imberbe !</span>",
+		"reponse": "<span class='reponse_100pc' >Le mot fleuri provient d’une mauvaise interprétation<br> du vieux français flori (blanc) qui renvoie<br> à la barbe blanche des sages.<br> En réalité, Charlemagne était sans doute imberbe !</span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -67,7 +67,7 @@
 		"proposition_b": "Faux",
 		"proposition_c": "Elle va bientôt le devenir",
 		"bonne_reponse": "a",
-		"reponse": "<span>Canonisée en 1920, Jeanne d’Arc est proclamée Sainte patronne secondaire de la France par Pie XI en 1922.</span>",
+		"reponse": "<span>Canonisée en 1920, Jeanne d’Arc est proclamée<br> Sainte patronne secondaire de la France<br> par Pie XI en 1922.</span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -87,7 +87,7 @@
 		"proposition_b": "Reine de Bretagne",
 		"proposition_c": "Reine de France",
 		"bonne_reponse": "c",
-		"reponse": "<span>Anne de Bretagne, duchesse de Bretagne, fut également deux fois reine de France. ",
+		"reponse": "<span>Anne de Bretagne, duchesse de Bretagne,<br> fut également deux fois reine de France.</span>",
 		"reponse_anim": "none"
 	},
 	{

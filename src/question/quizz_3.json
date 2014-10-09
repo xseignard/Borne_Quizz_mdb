@@ -1,6 +1,6 @@
 [
 	{
-		"question": "Quel roi a été guillotiné pendant la Révolution Française ?",
+		"question": "<span style='letter-spacing:-0.08em'>Quel roi a été guillotiné pendant la Révolution Française ?</span>",
 		"question_img": "none",
 		"proposition_a": "Louis XVI",
 		"proposition_b": "Charles X",
@@ -46,8 +46,7 @@
 		"proposition_b": "La main sur l'estomac",
 		"proposition_c": "Au garde-à-vous",
 		"bonne_reponse": "b",
-		"reponse": "<span>La main sur l’estomac de Napoléon a fait couler beaucoup d’encre ! Il semble cependant qu’il s’agisse d’une posture communément adoptée par les hommes de l’époque afin d’éviter les bras ballants, posture alors inconvenante.</span>",
-		"reponse": "none",
+		"reponse": "<span  class='reponse_100pc'>La main sur l’estomac de Napoléon<br> a fait couler beaucoup d’encre !<br>Il semble cependant qu’il s’agisse d’une posture<br>communément adoptée par les hommes de l’époque<br>afin d’éviter les bras ballants, posture alors inconvenante.</span>",
 		"reponse_anim": "none"
 	},
 	{

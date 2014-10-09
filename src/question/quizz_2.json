@@ -46,7 +46,7 @@
 		"proposition_b": "Une poule au pot",
 		"proposition_c": "Un pot au feu",
 		"bonne_reponse": "b",
-		"reponse": "<span>« Si Dieu me donne encore de la vie je ferai qu’il n’y aura point de laboureur en mon Royaume qui n’ait moyen d’avoir une poule dans son pot. » </span>",
+		"reponse": "<span  class='reponse_100pc'>« Si Dieu me donne encore de la vie<br> je ferai qu’il n’y aura point de laboureur en mon Royaume<br> qui n’ait moyen d’avoir une poule dans son pot.»<br><br>Citation communément attribuée à Henri IV  </span>",
 		"reponse_anim": "none"
 	},
 	{
@@ -86,7 +86,7 @@
 		"proposition_b": "Les culottes rayées",
 		"proposition_c": "Les culottes rouges",
 		"bonne_reponse": "a",
-		"reponse": "<span>En 1789, l’on nomme  - non sans mépris - « sans-culottes » les manifestants populaires qui portent des pantalons au lieu des « culottes » avec bas réservées aux nobles et aux bourgeois.</span>",
+		"reponse": "<span class='reponse_100pc'>En 1789, l’on nomme  - non sans mépris - « sans-culottes »<br> les manifestants populaires qui portent des pantalons<br> au lieu des « culottes » avec bas réservées<br> aux nobles et aux bourgeois.</span>",
 		"reponse_anim": "none"
 	},
 	{
