@@ -471,7 +471,7 @@ function playVideo(id){
 		case "4.1":
 			videoFile = currentLocation + "media/4.1_compte_a_rebours";
 			toDoOnEnd = function() { playVideo("noVideo"); nextQuizz(); };
-			toDoOnClick = function() { };
+			toDoOnClick = function() { playVideo("noVideo"); nextQuizz(); };
 			break;
 
 

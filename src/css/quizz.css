@@ -12,6 +12,7 @@
 html { display: table; table-layout: fixed; width: 100%; height: 100%; }
 body { display: table-cell; width: 100%; height: 100%; vertical-align: middle; margin:0; font-size: 50px; font-family: 'Open Sans', sans-serif; background-color: #f8f3ea;}
 a{  color:#000;  }
+sup{ vertical-align: top; font-size: 0.8em; position: relative; top: -0.3em; }
 /* main */
 
 .main { position: relative; color:#000; background:url("../img/bg.gif"); background-size: 100% 100%;
@@ -66,24 +67,17 @@ max-width: 1920px; max-height: 1080px; margin: auto; padding: 0; box-shadow: 0px
 
 /* ecran reponse */
 
-#zone_reponse{ z-index: 10; text-align: center; background:url("../img/bg.gif"); background-size: 100% 100%;
-font-size: 1.15em;margin:0; padding: 0; height: 100%  ; width: 100% }
+#zone_reponse{ z-index: 10; text-align: center; background:url("../img/bg.gif"); background-size: 100% 100%; font-size: 1.15em;margin:0; padding: 0; height: 100%  ; width: 100% }
 #zone_reponse .reponse{ display:table;  height: 100% ; width: 100% }
 #zone_reponse span{ display:table-cell; vertical-align:middle; width: 70%; padding: 0 15%; margin: auto; font-size: 1.1em; letter-spacing: -0.05em; line-height: 1.4em  }
-
 #zone_reponse span.reponse_100pc{ display:table-cell; vertical-align:middle; width: 100%; padding: 0;  }
-
-
+/**/
 #zone_reponse div.bg_q1 { background:url("../img/q1_casque.png"); background-size: 100% 100%;   }
-#zone_reponse div.bg_q1 span{ display:table-cell; vertical-align:middle; width: 86%; padding: 0 7%; padding-top: 22%; margin: auto; font-size: 1.1em; letter-spacing: 0 }
+#zone_reponse div.bg_q1 span{ line-height: 1.3em; display:table-cell; vertical-align:middle; width: 86%; padding: 0 7%; padding-top: 22%; margin: auto; font-size: 1.1em; letter-spacing: 0 }
 
+/**/
 #zone_reponse div.bg_q47 { background:url("../img/q47_poilu.png"); background-size: 100% 100%;   }
 #zone_reponse div.bg_q47 span{ display:table-cell; vertical-align:middle; width: 86%; padding: 0 7%; padding-top: 22%; margin: auto; font-size: 0.9em; line-height: 1.2em; letter-spacing: 0 }
-
-
-
-
-
 #zone_reponse .img_reponse{ position: absolute; width: 100%; height: 100%; top:0; left: 0; }
 #zone_reponse video{ background: none; position: absolute; display: block; width: 100%; height: 100%; top: 0px; left: 0px; }
 
