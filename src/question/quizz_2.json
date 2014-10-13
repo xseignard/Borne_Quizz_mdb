@@ -27,7 +27,7 @@
 		"proposition_c": "Vanter des chapeaux",
 		"bonne_reponse": "b",
 		"reponse": "none",
-		"reponse_anim": "Q13_Franc_1er.webm"
+		"reponse_anim": "Q13_Franc_1er"
 	},
 	{
 		"question": "On dit d'Henri IV qu'il était :",
@@ -67,7 +67,7 @@
 		"proposition_c": "Le soleil",
 		"bonne_reponse": "c",
 		"reponse": "none",
-		"reponse_anim": "Q17_louis XIV.webm"
+		"reponse_anim": "Q17_louis_XIV"
 	},
 	{
 		"question": "Au temps de Louis XIV, Versailles était un château :",

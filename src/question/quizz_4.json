@@ -17,7 +17,7 @@
 		"proposition_c": "Le Renard",
 		"bonne_reponse": "b",
 		"reponse": "none",
-		"reponse_anim": "Q32_clemenso.webm"
+		"reponse_anim": "Q32_clemenso"
 	},
 	{
 		"question": "Qui sont Armand Fallières, Félix Faure, Émile Loubet et Raymond Poincaré ?",
@@ -47,7 +47,7 @@
 		"proposition_c": "Des Jeux Olympiques",
 		"bonne_reponse": "b",
 		"reponse": "none",
-		"reponse_anim": "Q35_Mais_68.webm"
+		"reponse_anim": "Q35_Mais_68"
 	},
 	{
 		"question": "Comment surnomme-t-on les soldats de la Première Guerre mondiale ?",
@@ -77,7 +77,7 @@
 		"proposition_c": "La Grande Dépression",
 		"bonne_reponse": "a",
 		"reponse": "none",
-		"reponse_anim": "Q38_Annees_folles.webm"
+		"reponse_anim": "Q38_Annees_folles"
 	},
 	{
 		"question": "Quel est l'état d'esprit des Français après la Deuxième Guerre mondiale ?",

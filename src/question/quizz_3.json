@@ -17,7 +17,7 @@
 		"proposition_c": "Un chapeau de paludier",
 		"bonne_reponse": "b",
 		"reponse": "none",
-		"reponse_anim": "Q22_marianne.webm"
+		"reponse_anim": "Q22_marianne"
 	},
 	{
 		"question": "Que représente Marianne ?",
@@ -67,7 +67,7 @@
 		"proposition_c": "La bataille de Trafalgar",
 		"bonne_reponse": "a",
 		"reponse": "none",
-		"reponse_anim": "Q27_Napololo.webm"
+		"reponse_anim": "Q27_Napololo"
 	},
 	{
 		"question": "Comment s'appelait l'armée de Napoléon ?",

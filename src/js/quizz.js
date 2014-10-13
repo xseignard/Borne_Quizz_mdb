@@ -53,6 +53,10 @@ function initMain(){
 	playVideo("1.1");
 	//nextQuizz();
 	//Quizz_ckeckOut();
+
+	/* on définit une fois pour toute le bind ended de la vidéo "réponse" pour ne pas dupliquer ce comportement */
+	$("#zone_reponse video").bind("ended", function() { question_CheckOut(); $("#zone_reponse video").delay( 1000 ).fadeOut(); } );
+
 }
 
 // Screen switch
@@ -283,7 +287,7 @@ function showReponse(){
 
 	if(JsonArray[i].reponse != "none"){
 
-
+		// soit on a une réponse ecrite, alors on l'affiche et on met en route un timer2 qui declenchera checkOut
 		$("#zone_reponse .reponse").html(JsonArray[i].reponse);
 		$("#zone_reponse .reponse").delay( duree_reponse*1000 ).fadeIn( 600 );
 		$("#zone_reponse .reponse").delay( duree_reponse*1000 + duree_reponse_txt*1000  ).fadeOut( 1000 );
@@ -293,18 +297,19 @@ function showReponse(){
 	}else{
 		if(JsonArray[i].reponse_anim != "none"){
 
-			$("#zone_reponse video").delay( duree_reponse*1000 ).fadeIn( 400 );
+			// soit on a une réponse vidéo
 			videoFile = currentLocation + "media/"+JsonArray[i].reponse_anim;
-//			console.log("load video "+videoFile);
 
-			$("#zone_reponse video").bind("ended", function() { question_CheckOut(); $("#zone_reponse video").delay( 1000 ).fadeOut(); } );
-			$('#zone_reponse video source').attr('src', videoFile);
+			var video_reponse = document.getElementById("video_reponse");
+		    video_reponse.children[0].src = videoFile+".webm";
+		    video_reponse.children[1].src = videoFile+".mp4";
+			$("#video_reponse").delay( duree_reponse*1000 ).fadeIn( 400 );
 
 			$("#zone_reponse video").css("display","block");
 			$("#zone_reponse").css("display","block");
 			TweenLite.fromTo("#zone_reponse", 1, {opacity:"0"}, {  delay:2.5, opacity:"1",  onComplete:playvidAnswer } );
 		}else{
-//			console.log("timer 2 delay");
+			// soit on a pas de réponse
 			timer2 = setTimeout(question_CheckOut,duree_reponse*1000);
 		}
 	}
@@ -471,9 +476,8 @@ function playVideo(id){
 		case "4.1":
 			videoFile = currentLocation + "media/4.1_compte_a_rebours";
 			toDoOnEnd = function() { playVideo("noVideo"); nextQuizz(); };
-			toDoOnClick = function() { playVideo("noVideo"); nextQuizz(); };
+			toDoOnClick = function() {};
 			break;
-
 
 		case "noVideo":
 			break;
@@ -503,9 +507,13 @@ function playVideo(id){
 		document.getElementById("ecran_video").replaceChild(newVideo, currentVideo);
 	});
 
+	if(id=="noVideo"){
+    newVideo.children[0].src = newVideo.children[1].src = "";
+	}else{
     newVideo.children[0].src = videoFile+".webm";
     newVideo.children[1].src = videoFile+".mp4";
-	//newVideo.play();
+	}
+	newVideo.play();
 }
 
 
