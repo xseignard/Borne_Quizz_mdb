@@ -513,7 +513,7 @@ function playVideo(id){
     newVideo.children[0].src = videoFile+".webm";
     newVideo.children[1].src = videoFile+".mp4";
 	}
-	newVideo.play();
+	//newVideo.play();
 }
 
 
