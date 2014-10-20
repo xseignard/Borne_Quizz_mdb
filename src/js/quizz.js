@@ -301,9 +301,15 @@ function showReponse(){
 			videoFile = currentLocation + "media/"+JsonArray[i].reponse_anim;
 
 			var video_reponse = document.getElementById("video_reponse");
+			$("#video_reponse").delay( duree_reponse*1000 ).fadeIn( 400 );
+
+			video_reponse.style.className = "antiflicker";
+			video_reponse.addEventListener("play", function() {
+				video_reponse.style.className = "";
+			});
+
 		    video_reponse.children[0].src = videoFile+".webm";
 		    video_reponse.children[1].src = videoFile+".mp4";
-			$("#video_reponse").delay( duree_reponse*1000 ).fadeIn( 400 );
 
 			$("#zone_reponse video").css("display","block");
 			$("#zone_reponse").css("display","block");
