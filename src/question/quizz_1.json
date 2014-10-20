@@ -97,7 +97,7 @@
 		"proposition_b": "L'hermine",
 		"proposition_c": "Le triskel",
 		"bonne_reponse": "b",
-		"reponse": "<img src='/../img/illus/fleur_de_lys.png' class='img_reponse'>",
+		"reponse": "<img src='img/illus/fleur_de_lys.png' class='img_reponse'>",
 		"reponse_anim": "none"
 	}
 ]

@@ -392,7 +392,7 @@ function show_monojoueurs_mode(){
 	$(".score_j1 .intitule").html("Score");
 	$(".score_j2").css("display","none");
 	$(".score_j3").css("display","none");
-	$("#ecran_resultat").css("background-image","url('../img/bg_ecran_resultats_solo.png')");
+	$("#ecran_resultat").css("background-image","url('img/bg_ecran_resultats_solo.png')");
 	$("#ecran_resultat li.score_j1").css("width","92%");
 	$("#ecran_resultat li.score_j2").css("display","none");
 	$("#ecran_resultat li.score_j3").css("display","none");
