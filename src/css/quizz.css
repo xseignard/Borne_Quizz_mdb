@@ -9,6 +9,9 @@
 }
 
 * {	border: 0; margin: 0; padding: 0; list-style: none; outline: none; text-decoration: none; }
+*::selection {
+  background: none;
+}
 html { display: table; table-layout: fixed; width: 100%; height: 100%; }
 body { display: table-cell; width: 100%; height: 100%; vertical-align: middle; margin:0; font-size: 50px; font-family: 'Open Sans', sans-serif; background-color: #f8f3ea;}
 a{  color:#000;  }
@@ -52,7 +55,7 @@ max-width: 1920px; max-height: 1080px; margin: auto; padding: 0; box-shadow: 0px
 
 #footer { position: absolute; letter-spacing: -2px; bottom: 65px; height: 105px; font-size: 0.85em; width: 80%; margin-left: 10%;background-size: 100% 100%;  background-repeat: no-repeat;}
 #footer ul { margin: 0 20px; padding: 0 }
-#footer li{ float: left; margin: 8px 40px 0 20px; width:330px; padding: 0}
+#footer li{ float: left; margin: 8px 40px 0 20px; width:auto; padding: 0;}
 #footer span{ float: left; display: inline-block; margin: 12px 5px;  border-right : 1.5px solid #fff; padding-right: 15px; }
 #footer .score{ border : none; width: 80px; height : 75px; display: inline-block; margin: 3px 0 0 5px; padding: 0; background: red; background: url("../img/scores_line.png"); background-size: 100% auto; background-repeat: repeat-y;  -webkit-transition: background-position 0.5s ease-out;}
 #footer .icon{  float: right;  width: 60px; height: 60px; background-position: 0 0%; display: block; margin: 15px 5px; background: url("../img/icon_winlost.png");  background-size: 100% 300%;}

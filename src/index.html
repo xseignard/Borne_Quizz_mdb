@@ -13,7 +13,7 @@
 
 	<!-- ecran VIDEO -->
 	<section id="ecran_video" class="ecran">
-		<video id="videoclip" autoplay >
+		<video id="videoclip" autoplay="true" >
 	        <source src="" type="video/webm" />
 	        <source src="" type="video/mp4" />
 	        <p>You navigator doesn't support HTML5 video!</p>
@@ -24,7 +24,7 @@
 	<section id="ecran_questions" class="ecran">
 		<div id="zone_reponse"  class="ecran">
 			<div class="reponse"></div>
-			<video id="video_reponse" autoplay >
+			<video id="video_reponse" autoplay="true" >
 		        <source src="" type="video/webm" />
 		        <source src="" type="video/mp4" />
 		        <p>You navigator doesn't support HTML5 video!</p>
@@ -96,6 +96,7 @@
 	</section>
 
 	<!-- build:js js/vendors.min.js -->
+	<script src="../bower_components/bowser/bowser.js"></script>
 	<script src="../bower_components/jquery/dist/jquery.js"></script>
 	<script src="../bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
 	<script src="../bower_components/gsap/src/uncompressed/easing/EasePack.js"></script>

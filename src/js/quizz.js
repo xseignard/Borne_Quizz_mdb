@@ -40,6 +40,8 @@ if (currentLocation.indexOf("index.html") > -1) {
 // Main init
 
 function initMain(){
+	
+	playVideo("1.1");
 
 	show_ecran("none");
 	currentQuizz = 0;
@@ -50,7 +52,7 @@ function initMain(){
 	clearTimeout(timer2);
 	clearTimeout(timer3);
 	$(document).keypress(Touchdown);
-	playVideo("1.1");
+	
 	//nextQuizz();
 	//Quizz_ckeckOut();
 
@@ -63,20 +65,24 @@ function initMain(){
 
 function show_ecran(id){
 
-	$("#ecran_video").css("display","none");
-	$("#ecran_questions").css("display","none");
-	$("#zone_reponse").css("display","none");
-	$("#ecran_resultat").css("display","none");
-
 	switch(id){
 		case "ecran_video":
 			$("#ecran_video").css("display","block");
+			$("#ecran_questions").css("display","none");
+			$("#zone_reponse").css("display","none");
+			$("#ecran_resultat").css("display","none");
 			break;
 		case "questions":
 			$("#ecran_questions").fadeIn();
+			$("#zone_reponse").css("display","none");
+			$("#ecran_resultat").css("display","none");
+			$("#ecran_video").css("display","none");
 			break;
 		case "ecran_resultat":
 			$("#ecran_resultat").fadeIn();
+			$("#zone_reponse").css("display","none");
+			$("#ecran_questions").css("display","none");
+			$("#ecran_video").css("display","none");
 			break;
 	}
 }
@@ -88,7 +94,7 @@ function nextQuizz(){
 	//console.log("init Quizz N°"+currentQuizz);
 	showQuizz = true;
 	show_ecran("questions");
-	if(currentQuizz<4){ currentQuizz=Number(currentQuizz+1); }else{ currentQuizz = 1; }
+	if(currentQuizz<4){ currentQuizz=Number(currentQuizz+1); }else{ main_reset(); }
 
 	/* custom visuals  */
 	currentCouleur = couleur_id_currentQuizz[currentQuizz];
@@ -101,6 +107,10 @@ function nextQuizz(){
 	TweenLite.to("#prop_a", 0, {opacity:"0"});
 	TweenLite.to("#prop_b", 0, {opacity:"0"});
 	TweenLite.to("#prop_c", 0, {opacity:"0"});
+
+	$("#prop_a a").css("color","#000");
+	$("#prop_b a").css("color","#000");
+	$("#prop_c a").css("color","#000");
 
 	/* init Gameplay */
 	joueur1.initScore();
@@ -333,7 +343,18 @@ function question_CheckOut(){
 	clearTimeout(timer2);
 	testNoBody++;
 	console.log("testNoBody "+testNoBody);
-	if(testNoBody>=3){ main_reset(); } // réinitialisation si aucune réponse deux questions de suite
+	if(testNoBody>=3){ 
+
+		testNoBody = 0;
+		playVideo("1.1"); // reload
+		show_ecran("ecran_video");
+		currentQuestion = 1;
+
+		clearTimeout(timer1);
+		clearTimeout(timer2);
+		clearTimeout(timer3);
+
+	} // réinitialisation si aucune réponse deux questions de suite
 	else{
 		$("#zone_reponse").delay( 1000 ).fadeOut(1000);
 	//	console.log("// function question_CheckOut");
@@ -458,6 +479,7 @@ function playVideo(id){
 			videoFile = currentLocation + "media/1.3Titre_sortie";
 			toDoOnEnd = function() { playVideo("2.1"); };
 			toDoOnClick = function() { playVideo("2.1"); };
+	 		waitForStart = false;
 			break;
 		case "1.3_interQuizz":
 			videoFile = currentLocation + "media/3.1_choix_quiz_entree";
@@ -495,7 +517,6 @@ function playVideo(id){
 	var currentVideo = document.getElementById("videoclip");
 	// clone the current video, it will remove all previous event listeners
 	var newVideo = currentVideo.cloneNode(true);
-
 	// bind the click listener
 	newVideo.addEventListener("click", toDoOnClick);
 	// bind the ended listener
@@ -514,12 +535,13 @@ function playVideo(id){
 	});
 
 	if(id=="noVideo"){
-    newVideo.children[0].src = newVideo.children[1].src = "";
-	}else{
-    newVideo.children[0].src = videoFile+".webm";
-    newVideo.children[1].src = videoFile+".mp4";
+    	newVideo.children[0].src = newVideo.children[1].src = "";
 	}
-	//newVideo.play();
+	else{
+	    newVideo.children[0].src = videoFile+".webm";
+	    newVideo.children[1].src = videoFile+".mp4";
+	}
+	if (bowser.msie || bowser.safari) newVideo.play();
 }
 
 
@@ -530,23 +552,22 @@ function Touchdown(evenement){
 
 	var caractere = String.fromCharCode(evenement.which);
 
-	if(waitForStart==true){
-		waitForStart = false;
-		playVideo("1.3");
+	 if(waitForStart==true){
+	 	playVideo("1.3");
 
-		switch(caractere) {
-			case "1": 	currentQuizz = 0;
-				break;
-			case "2": 	currentQuizz = 1;
-				break
-			case "3": 	currentQuizz = 2;
-				break;
-			case "4": 	currentQuizz = 3;
-				break;
-			}
+	// 	switch(caractere) {
+	// 		case "1": 	currentQuizz = 0;
+	// 			break;
+	// 		case "2": 	currentQuizz = 1;
+	// 			break
+	// 		case "3": 	currentQuizz = 2;
+	// 			break;
+	// 		case "4": 	currentQuizz = 3;
+	// 			break;
+	// 		}
 
-	}
-	if(caractere=="f"){ Quizz_ckeckOut(); }
+	 }
+	//if(caractere=="f"){ Quizz_ckeckOut(); }
 
 }
 
@@ -591,7 +612,6 @@ var joueur3 = new joueur("joueur 3");
 
 
 window.onload=function(){
-
 	initMain();
 };
 
