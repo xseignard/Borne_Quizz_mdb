@@ -313,15 +313,16 @@ function showReponse(){
 			var video_reponse = document.getElementById("video_reponse");
 			$("#video_reponse").delay( duree_reponse*1000 ).fadeIn( 400 );
 
-			video_reponse.style.className = "antiflicker";
+			video_reponse.className = "antiflicker";
 			video_reponse.addEventListener("play", function() {
-				video_reponse.style.className = "";
+				video_reponse.className = "";
+				video_reponse.style.display = 'block';
 			});
 
 		    video_reponse.children[0].src = videoFile+".webm";
 		    video_reponse.children[1].src = videoFile+".mp4";
+			if (bowser.msie || bowser.safari) video_reponse.play();
 
-			$("#zone_reponse video").css("display","block");
 			$("#zone_reponse").css("display","block");
 			TweenLite.fromTo("#zone_reponse", 1, {opacity:"0"}, {  delay:2.5, opacity:"1",  onComplete:playvidAnswer } );
 		}else{
@@ -339,6 +340,13 @@ function playvidAnswer(){
 
 
 function question_CheckOut(){
+
+	// init video src
+	var video_reponse = document.getElementById("video_reponse");
+    video_reponse.children[0].src = "";
+    video_reponse.children[1].src = "";
+
+
 
 	clearTimeout(timer2);
 	testNoBody++;
@@ -524,11 +532,11 @@ function playVideo(id){
 	// trick to avoid flickering
 	// set to display none and size of 1px so the flickering will happen on only 1px
 	// thus invisible for the user
-	newVideo.style.className = "antiflicker";
+	newVideo.className = "antiflicker";
 	newVideo.loop = loop;
 	// when the new video is playing, reset size and display to its defaults
 	newVideo.addEventListener("play", function() {
-		newVideo.style.className = "";
+		newVideo.className = "";
 		// and finally replace the video in the DOM
 		console.log('play');
 		document.getElementById("ecran_video").replaceChild(newVideo, currentVideo);
