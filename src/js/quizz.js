@@ -40,7 +40,7 @@ if (currentLocation.indexOf("index.html") > -1) {
 // Main init
 
 function initMain(){
-	
+
 	playVideo("1.1");
 
 	show_ecran("none");
@@ -52,7 +52,7 @@ function initMain(){
 	clearTimeout(timer2);
 	clearTimeout(timer3);
 	$(document).keypress(Touchdown);
-	
+
 	//nextQuizz();
 	//Quizz_ckeckOut();
 
@@ -343,7 +343,7 @@ function question_CheckOut(){
 	clearTimeout(timer2);
 	testNoBody++;
 	console.log("testNoBody "+testNoBody);
-	if(testNoBody>=3){ 
+	if(testNoBody>=3){
 
 		testNoBody = 0;
 		playVideo("1.1"); // reload
@@ -551,23 +551,8 @@ function playVideo(id){
 function Touchdown(evenement){
 
 	var caractere = String.fromCharCode(evenement.which);
-
-	 if(waitForStart==true){
-	 	playVideo("1.3");
-
-	// 	switch(caractere) {
-	// 		case "1": 	currentQuizz = 0;
-	// 			break;
-	// 		case "2": 	currentQuizz = 1;
-	// 			break
-	// 		case "3": 	currentQuizz = 2;
-	// 			break;
-	// 		case "4": 	currentQuizz = 3;
-	// 			break;
-	// 		}
-
-	 }
-	//if(caractere=="f"){ Quizz_ckeckOut(); }
+	if(caractere === "r") main_reset();
+	if(waitForStart === true) playVideo("1.3");
 
 }
 

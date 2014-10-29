@@ -8,6 +8,10 @@
   src: url('../font/OpenSans-Light.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
+* {
+	cursor: none;
+}
+
 * {	border: 0; margin: 0; padding: 0; list-style: none; outline: none; text-decoration: none; }
 *::selection {
   background: none;
