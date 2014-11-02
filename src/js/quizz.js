@@ -213,7 +213,9 @@ function question_CheckIn(){
 		$("#illus_question").attr('src',"");
 	}
 
-	waitForAnswer();
+	setTimeout(function() {
+		waitForAnswer();
+	}, 2000);
 }
 
 
