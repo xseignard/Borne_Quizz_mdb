@@ -39,18 +39,19 @@ if (currentLocation.indexOf("index.html") > -1) {
 
 // Main init
 
-function initMain(){
+function initMain(index){
 
 	playVideo("1.1");
 
 	show_ecran("none");
-	currentQuizz = 0;
+	currentQuizz = index;
 	currentQuestion = 1;
 	showQuizz = false;
-
+	testNoBody = 0;
 	clearTimeout(timer1);
 	clearTimeout(timer2);
 	clearTimeout(timer3);
+	$(document).unbind('keypress');
 	$(document).keypress(Touchdown);
 
 	//nextQuizz();
@@ -144,7 +145,7 @@ function Quizz_ckeckOut(){
 function Quizz_IsOver(){
 
 	clearTimeout(timer3);
-	if(currentQuizz==4){ initMain(); }
+	if(currentQuizz==4){ initMain(0); }
 	else{	playVideo("1.1_interQuizz"); }
 }
 
@@ -213,9 +214,7 @@ function question_CheckIn(){
 		$("#illus_question").attr('src',"");
 	}
 
-	setTimeout(function() {
-		waitForAnswer();
-	}, 2000);
+	waitForAnswer();
 }
 
 
@@ -226,7 +225,10 @@ function waitForAnswer(){
 	joueur2.avote = false;
 	joueur3.avote = false;
 
-	$(document).keypress(traitement);
+	setTimeout(function() {
+		$(document).keypress(traitement);
+	}, 2000);
+
 	document.getElementById("gif_chrono").src = "img/chrono_q"+currentQuizz+".gif?time=" + new Date();
 	secondes = duree_question;
 	loop_CompteArebours();
@@ -348,13 +350,12 @@ function question_CheckOut(){
 	if(testNoBody>=3){
 
 		testNoBody = 0;
-		playVideo("1.1"); // reload
-		show_ecran("ecran_video");
-		currentQuestion = 1;
 
 		clearTimeout(timer1);
 		clearTimeout(timer2);
 		clearTimeout(timer3);
+		if (currentQuizz === 4) currentQuizz = 0;
+		initMain(currentQuizz);
 
 	} // réinitialisation si aucune réponse deux questions de suite
 	else{
@@ -599,7 +600,7 @@ var joueur3 = new joueur("joueur 3");
 
 
 window.onload=function(){
-	initMain();
+	initMain(0);
 };
 
 
