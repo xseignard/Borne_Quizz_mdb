@@ -18,6 +18,8 @@ Les outils de dev mis en place sont les suivants:
 
 ## Installer les dépendances du projet
 
+Dans un terminal, toujours depuis le dossier `Borne_Quizz_mdb`.
+
 Pour installer les libs front end que le projet utilise, taper `bower install` dans un terminal, cela va télécharger les dépendances dans le dossier `bower_components`. Pour chercher d'autres dépendances, taper `bower search MOT_CLEF`. Une fois trouvée, taper `bower install MA_DEPENDANCE --save` pour télécharger la dépendance et la sauvegarder dans le fichier de définition des dépendances `bower.json`.
 
 Pour installer les outils dont on a besoin pour builder le projet, il faut taper `npm install`, cela va télécharger les outils nécessaires au build. Pour rajouter un outil, utiliser la commande `npm install MA_DEPENDANCE --save-dev` pour télécharger cet outil et le sauvegarder dans la liste des dépendances de developpement (une dépendance de developpement est une dépendance qui sert juste pendant le dev, contrairement à une dépendance qui sert une fois le projet buildé).
