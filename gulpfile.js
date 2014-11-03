@@ -99,8 +99,7 @@ gulp.task('nw', function() {
 	var nw = new NwBuilder({
 		files: [dest.folder + '/**/*', 'package.json'],
 		platforms: ['win','osx', 'linux64'],
-		buildDir: './webkitbuilds',
-		version: '0.8.6'
+		buildDir: './webkitbuilds'
 	});
 	// log build stuff
 	nw.on('log', gutil.log);

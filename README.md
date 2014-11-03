@@ -12,7 +12,8 @@ Les outils de dev mis en place sont les suivants:
 
 ## Installer les outils de dev
 
-- gulp et bower : `npm install gulp bower -g`
+- installer node.js: [http://nodejs.org](http://nodejs.org)
+- gulp et bower : `npm install gulp bower -g` (depuis le dossier `Borne_Quizz_mdb` dans un terminal).
 - editorconfig: installer [Package control](https://sublime.wbond.net/installation) pour Sublime Text, puis presser `ctrl+maj+p` ou `cmd+maj+p` et taper `install` puis `enter`, une liste de plugins Sublime Text apparait, taper `EditorConfig` puis `enter` pour l'installer.
 
 ## Installer les dépendances du projet
@@ -37,4 +38,4 @@ Il y a 2 builds:
 - un build sous forme d'app avec node webkit, qui se lance avec la commande `gulp prepare && gulp nw`
   - il crée les executables pour les plateformes suivantes: windows, mac et linux 64
   - ces executables se retrouvent dans le dossier `webkitbuilds`
-  - il faut relancer `gulp buildApp` à chaque fois que l'on veut faire une nouvelle version de l'app.
+  - il faut relancer `gulp prepare && gulp nw` à chaque fois que l'on veut faire une nouvelle version de l'app.

@@ -30,6 +30,8 @@ var timer_sleeping;
 
 var showQuizz = false;
 
+var canVote = false;
+
 // hack to transparently make media work with browser and node webkit
 var currentLocation = window.location.href;
 if (currentLocation.indexOf("index.html") > -1) {
@@ -53,13 +55,20 @@ function initMain(index){
 	clearTimeout(timer3);
 	$(document).unbind('keypress');
 	$(document).keypress(Touchdown);
-
+	$(document).keypress(traitement);
+	canVote = false;
 	//nextQuizz();
 	//Quizz_ckeckOut();
 
 	/* on définit une fois pour toute le bind ended de la vidéo "réponse" pour ne pas dupliquer ce comportement */
+	$("#zone_reponse video").unbind('ended');
 	$("#zone_reponse video").bind("ended", function() { question_CheckOut(); $("#zone_reponse video").delay( 1000 ).fadeOut(); } );
 
+	var gui = require('nw.gui');
+	gui.App.setCrashDumpDir(gui.App.dataPath);
+	var win = gui.Window.get();
+	// show devtools to debug
+	win.showDevTools();
 }
 
 // Screen switch
@@ -226,7 +235,8 @@ function waitForAnswer(){
 	joueur3.avote = false;
 
 	setTimeout(function() {
-		$(document).keypress(traitement);
+		//$(document).keypress(traitement);
+		canVote = true;
 	}, 2000);
 
 	document.getElementById("gif_chrono").src = "img/chrono_q"+currentQuizz+".gif?time=" + new Date();
@@ -267,6 +277,8 @@ function loop_CompteArebours(){
 
 
 function showReponse(){
+
+	canVote = false;
 
 	joueur1.avote = true;
 	joueur2.avote = true;
@@ -376,30 +388,32 @@ function question_CheckOut(){
 
 function traitement(evenement){
 
-	testNoBody = 0;
-	show_multijoueurs_mode();
-	var caractere = String.fromCharCode(evenement.which);
-	switch(caractere) {
-		case "1": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="a")); }
-			break;
-		case "2": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="b")); }
-			break;
-		case "3": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="c")); }
-			break;
-		case "4": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="a")); }
-			break;
-		case "5":   if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="b")); }
-			break;
-		case "6": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="c")); }
-			break;
-		case "7": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="a")); }
-			break;
-		case "8": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="b")); }
-			break;
-		case "9": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="c")); }
-			break;
+	if (canVote) {
+		testNoBody = 0;
+		show_multijoueurs_mode();
+		var caractere = String.fromCharCode(evenement.which);
+		switch(caractere) {
+			case "1": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="a")); }
+				break;
+			case "2": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="b")); }
+				break;
+			case "3": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="c")); }
+				break;
+			case "4": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="a")); }
+				break;
+			case "5":   if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="b")); }
+				break;
+			case "6": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="c")); }
+				break;
+			case "7": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="a")); }
+				break;
+			case "8": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="b")); }
+				break;
+			case "9": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="c")); }
+				break;
+		}
+		updateScores();
 	}
-	updateScores();
 }
 
 function show_multijoueurs_mode(){
