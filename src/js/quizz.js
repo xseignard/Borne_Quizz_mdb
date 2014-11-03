@@ -66,9 +66,9 @@ function initMain(index){
 
 	var gui = require('nw.gui');
 	gui.App.setCrashDumpDir(gui.App.dataPath);
-	var win = gui.Window.get();
+	//var win = gui.Window.get();
 	// show devtools to debug
-	win.showDevTools();
+	//win.showDevTools();
 }
 
 // Screen switch
