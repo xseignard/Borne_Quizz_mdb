@@ -26,9 +26,12 @@ var gris_wrong_prop = "#e9e5de";
 var timer1;
 var timer2;
 var timer3;
+var canVoteTimer;
 var timer_sleeping;
 
 var showQuizz = false;
+
+var canVote = false;
 
 // hack to transparently make media work with browser and node webkit
 var currentLocation = window.location.href;
@@ -39,26 +42,36 @@ if (currentLocation.indexOf("index.html") > -1) {
 
 // Main init
 
-function initMain(){
-	
+function initMain(index){
+
 	playVideo("1.1");
 
 	show_ecran("none");
-	currentQuizz = 0;
+	currentQuizz = index;
 	currentQuestion = 1;
 	showQuizz = false;
-
+	testNoBody = 0;
 	clearTimeout(timer1);
 	clearTimeout(timer2);
 	clearTimeout(timer3);
+	$(document).unbind('keypress');
 	$(document).keypress(Touchdown);
-	
+	$(document).keypress(traitement);
+	canVote = false;
 	//nextQuizz();
 	//Quizz_ckeckOut();
 
 	/* on définit une fois pour toute le bind ended de la vidéo "réponse" pour ne pas dupliquer ce comportement */
+	$("#zone_reponse video").unbind('ended');
 	$("#zone_reponse video").bind("ended", function() { question_CheckOut(); $("#zone_reponse video").delay( 1000 ).fadeOut(); } );
 
+	if (typeof require !== 'undefined'){
+		var gui = require('nw.gui');
+		gui.App.setCrashDumpDir(gui.App.dataPath);
+		//var win = gui.Window.get();
+		// show devtools to debug
+		//win.showDevTools();
+	}
 }
 
 // Screen switch
@@ -90,11 +103,18 @@ function show_ecran(id){
 // Gameplay
 
 function nextQuizz(){
+	console.log("// function nextQuizz");
+	console.log("init Quizz N°"+currentQuizz);
 
-	//console.log("init Quizz N°"+currentQuizz);
 	showQuizz = true;
 	show_ecran("questions");
+	
+	/* avant modif par géraldine */
 	if(currentQuizz<4){ currentQuizz=Number(currentQuizz+1); }else{ main_reset(); }
+	
+	/* modif Géraldine */
+	// Le quizz n°1 a l'index 0, il faut donc faire un reset au 3eme index
+	//if(currentQuizz<3){ currentQuizz=Number(currentQuizz+1); }else{ main_reset(); }
 
 	/* custom visuals  */
 	currentCouleur = couleur_id_currentQuizz[currentQuizz];
@@ -132,19 +152,21 @@ function valideJsonArray(arr) {
 }
 
 function Quizz_ckeckOut(){
+	console.log("// function Quizz_ckeckOut");
 
 	show_ecran("ecran_resultat");
 	$("#ecran_resultat span.score_j1").html(joueur1.score+" pt");
 	$("#ecran_resultat span.score_j2").html(joueur2.score+" pt");
 	$("#ecran_resultat span.score_j3").html(joueur3.score+" pt");
 
+	clearTimeout(timer3);
 	timer3 = setTimeout(Quizz_IsOver,duree_affichage_resultats*1000);
 }
 
 function Quizz_IsOver(){
 
 	clearTimeout(timer3);
-	if(currentQuizz==4){ initMain(); }
+	if(currentQuizz==4){ main_reset(); }
 	else{	playVideo("1.1_interQuizz"); }
 }
 
@@ -162,19 +184,19 @@ function nextQuestion(){
 
 function question_CheckIn(){
 
+	console.log("// function question_CheckIn");
+
 	joueur1.iconBgPos = "0 100%";
 	joueur2.iconBgPos = "0 100%";
 	joueur3.iconBgPos = "0 100%";
 	updateScores();
 
-	//console.log("// function question_CheckIn");
 
 
 	var i = currentQuestion;
 	updateScores();
 	$( " #num_Question" ).html("Question "+Number(currentQuestion+1)+"/"+10)
 	$( "#ecran_questions" ).fadeIn(1000);
-//console.log(JsonArray[i].question);
 
 	$("#question").html(JsonArray[i].question);
 	TweenLite.to("#question", 0, {top:25, opacity:"0"});
@@ -224,11 +246,17 @@ function waitForAnswer(){
 	joueur2.avote = false;
 	joueur3.avote = false;
 
-	$(document).keypress(traitement);
+	clearTimeout(canVoteTimer);
+	canVoteTimer = setTimeout(function() {
+		//$(document).keypress(traitement);
+		canVote = true;
+	}, 2000);
+
 	document.getElementById("gif_chrono").src = "img/chrono_q"+currentQuizz+".gif?time=" + new Date();
 	secondes = duree_question;
 	loop_CompteArebours();
 }
+
 
 function updateScores(){
 
@@ -256,6 +284,7 @@ function loop_CompteArebours(){
 		showReponse();
 	}else{
 		$("#gifTimer span").html(secondes);
+		clearTimeout(timer1);
 		timer1 = setTimeout(loop_CompteArebours,1500);
 		secondes--;
 	}
@@ -263,6 +292,8 @@ function loop_CompteArebours(){
 
 
 function showReponse(){
+
+	canVote = false;
 
 	joueur1.avote = true;
 	joueur2.avote = true;
@@ -303,6 +334,7 @@ function showReponse(){
 		$("#zone_reponse .reponse").delay( duree_reponse*1000 + duree_reponse_txt*1000  ).fadeOut( 1000 );
 		$( "#zone_reponse" ).delay( duree_reponse*1000 ).fadeIn( 400 );
 
+		clearTimeout(timer2);
 		timer2 = setTimeout(question_CheckOut,(duree_reponse*1000+duree_reponse_txt*1000 + 3000));
 	}else{
 		if(JsonArray[i].reponse_anim != "none"){
@@ -313,20 +345,20 @@ function showReponse(){
 			var video_reponse = document.getElementById("video_reponse");
 			$("#video_reponse").delay( duree_reponse*1000 ).fadeIn( 400 );
 
-			video_reponse.className = "antiflicker";
+			video_reponse.style.className = "antiflicker";
 			video_reponse.addEventListener("play", function() {
-				video_reponse.className = "";
-				video_reponse.style.display = 'block';
+				video_reponse.style.className = "";
 			});
 
 		    video_reponse.children[0].src = videoFile+".webm";
 		    video_reponse.children[1].src = videoFile+".mp4";
-			if (bowser.msie || bowser.safari) video_reponse.play();
 
+			$("#zone_reponse video").css("display","block");
 			$("#zone_reponse").css("display","block");
 			TweenLite.fromTo("#zone_reponse", 1, {opacity:"0"}, {  delay:2.5, opacity:"1",  onComplete:playvidAnswer } );
 		}else{
 			// soit on a pas de réponse
+			clearTimeout(timer2);
 			timer2 = setTimeout(question_CheckOut,duree_reponse*1000);
 		}
 	}
@@ -340,32 +372,24 @@ function playvidAnswer(){
 
 
 function question_CheckOut(){
-
-	// init video src
-	var video_reponse = document.getElementById("video_reponse");
-    video_reponse.children[0].src = "";
-    video_reponse.children[1].src = "";
-
-
+	console.log("// function question_CheckOut");
 
 	clearTimeout(timer2);
 	testNoBody++;
 	console.log("testNoBody "+testNoBody);
-	if(testNoBody>=3){ 
+	if(testNoBody>=3){
 
 		testNoBody = 0;
-		playVideo("1.1"); // reload
-		show_ecran("ecran_video");
-		currentQuestion = 1;
 
 		clearTimeout(timer1);
 		clearTimeout(timer2);
 		clearTimeout(timer3);
+		if (currentQuizz === 4) currentQuizz = 0;
+		initMain(currentQuizz);
 
 	} // réinitialisation si aucune réponse deux questions de suite
 	else{
 		$("#zone_reponse").delay( 1000 ).fadeOut(1000);
-	//	console.log("// function question_CheckOut");
 		var i =  currentQuestion;
 		TweenLite.to("#question", 1, { opacity:"0", onComplete:nextQuestion});
 		TweenLite.to("#prop_a", 1, { opacity:"0"});
@@ -381,30 +405,32 @@ function question_CheckOut(){
 
 function traitement(evenement){
 
-	testNoBody = 0;
-	show_multijoueurs_mode();
-	var caractere = String.fromCharCode(evenement.which);
-	switch(caractere) {
-		case "1": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="a")); }
-			break;
-		case "2": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="b")); }
-			break;
-		case "3": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="c")); }
-			break;
-		case "4": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="a")); }
-			break;
-		case "5":   if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="b")); }
-			break;
-		case "6": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="c")); }
-			break;
-		case "7": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="a")); }
-			break;
-		case "8": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="b")); }
-			break;
-		case "9": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="c")); }
-			break;
+	if (canVote) {
+		testNoBody = 0;
+		show_multijoueurs_mode();
+		var caractere = String.fromCharCode(evenement.which);
+		switch(caractere) {
+			case "1": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="a")); }
+				break;
+			case "2": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="b")); }
+				break;
+			case "3": 	if(joueur1.avote == false){ joueur1.reponse((bonne_reponse=="c")); }
+				break;
+			case "4": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="a")); }
+				break;
+			case "5":   if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="b")); }
+				break;
+			case "6": 	if(joueur2.avote == false){ joueur2.reponse((bonne_reponse=="c")); }
+				break;
+			case "7": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="a")); }
+				break;
+			case "8": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="b")); }
+				break;
+			case "9": 	if(joueur3.avote == false){ joueur3.reponse((bonne_reponse=="c")); }
+				break;
+		}
+		updateScores();
 	}
-	updateScores();
 }
 
 function show_multijoueurs_mode(){
@@ -520,7 +546,8 @@ function playVideo(id){
 	}
 
 	console.log("playVideo function id = "+id);
-	console.log("onEnd = "+toDoOnEnd);
+	//console.log("onEnd = "+toDoOnEnd);
+
 
 	var currentVideo = document.getElementById("videoclip");
 	// clone the current video, it will remove all previous event listeners
@@ -532,15 +559,17 @@ function playVideo(id){
 	// trick to avoid flickering
 	// set to display none and size of 1px so the flickering will happen on only 1px
 	// thus invisible for the user
-	newVideo.className = "antiflicker";
+	newVideo.style.className = "antiflicker";
 	newVideo.loop = loop;
 	// when the new video is playing, reset size and display to its defaults
 	newVideo.addEventListener("play", function() {
-		newVideo.className = "";
+// [GL] Quand ça bugue on n'arrive pas ici !
+		newVideo.style.className = "";
 		// and finally replace the video in the DOM
-		console.log('play');
+		//console.log('play');
 		document.getElementById("ecran_video").replaceChild(newVideo, currentVideo);
 	});
+	//if (id == "1.1") alert(currentVideo + '     ' + newVideo.children[0] + '     ' + newVideo.children[1] +  '     ' + videoFile);
 
 	if(id=="noVideo"){
     	newVideo.children[0].src = newVideo.children[1].src = "";
@@ -549,7 +578,10 @@ function playVideo(id){
 	    newVideo.children[0].src = videoFile+".webm";
 	    newVideo.children[1].src = videoFile+".mp4";
 	}
+
 	if (bowser.msie || bowser.safari) newVideo.play();
+	newVideo.load();
+
 }
 
 
@@ -559,27 +591,13 @@ function playVideo(id){
 function Touchdown(evenement){
 
 	var caractere = String.fromCharCode(evenement.which);
-
-	 if(waitForStart==true){
-	 	playVideo("1.3");
-
-	// 	switch(caractere) {
-	// 		case "1": 	currentQuizz = 0;
-	// 			break;
-	// 		case "2": 	currentQuizz = 1;
-	// 			break
-	// 		case "3": 	currentQuizz = 2;
-	// 			break;
-	// 		case "4": 	currentQuizz = 3;
-	// 			break;
-	// 		}
-
-	 }
-	//if(caractere=="f"){ Quizz_ckeckOut(); }
+	if(caractere === "r") main_reset();
+	if(waitForStart === true) playVideo("1.3");
 
 }
 
 function main_reset(){
+	console.log("// function main_reset");
 	window.location.reload();
 }
 
@@ -620,7 +638,7 @@ var joueur3 = new joueur("joueur 3");
 
 
 window.onload=function(){
-	initMain();
+	initMain(0);
 };
 
 
